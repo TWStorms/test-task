@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title', 'Login')
 @section('content')
     <div class="auth-layout-wrap auth-layout-register backgroundimageset" style="background-image: url({{asset('assets/images/yacht1.jpg')}});">
         <div class="auth-content signup-card">

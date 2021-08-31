@@ -253,3 +253,17 @@ input:hover {
 
     }
 }
+#userDropdown{
+    -webkit-background-size: 32px 32px;
+    background-size: 32px 32px;
+    border-width: 50px;
+    border-color: purple;
+    -webkit-border-radius: 50%;
+    border-radius: 40%;
+    display: block;
+    margin: 0;
+    position: relative;
+    height: 55px;
+    width: 55px;
+    z-index: 0;
+}

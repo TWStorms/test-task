@@ -26,16 +26,15 @@ class RedirectIfAuthenticated
 //        Auth::logout();
 
         if (Auth::check()) {
-dd(Auth::user());
             $user = Auth::user();
-            if (GeneralHelper::IS_ADMIN()){
-                return redirect('/home/');
+            if (GeneralHelper::IS_SUPER_ADMIN()){
+                return redirect('/super-admin/dashboard');
             }
             if (GeneralHelper::IS_SUB_ADMIN()){
-                return redirect('/home/');
+                return redirect('/sub-admin/dashboard');
             }
             if (GeneralHelper::IS_USER()){
-                return redirect('/home/');
+                return redirect('/user/dashboard');
             }
         }
 

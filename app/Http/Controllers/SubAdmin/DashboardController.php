@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\SubAdmin;
 
 use Illuminate\View\View;
 use Illuminate\Http\Request;
@@ -23,6 +23,9 @@ use Illuminate\Contracts\Container\BindingResolutionException;
 class DashboardController extends Controller
 {
 
+    # Pages
+    const DASHBOARD_PAGE = 'sub-admin.dashboard';
+
     /**
      * Interface IUserServiceContract
      *
@@ -42,5 +45,11 @@ class DashboardController extends Controller
         $this->_userService = $_userService;
     }
 
-
+    /**
+     * Sub Admin Dashboard
+     */
+    public function dashboard()
+    {
+        return view(self::DASHBOARD_PAGE);
+    }
 }

@@ -26,6 +26,8 @@ return [
     |
     */
 
+    'number' => env('NUMBER'),
+
     'env' => env('APP_ENV', 'production'),
 
     /*

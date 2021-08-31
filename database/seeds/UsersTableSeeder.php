@@ -30,7 +30,7 @@ class UsersTableSeeder extends Seeder
     {
         DB::table('users')->delete();
 
-        // Create Admin info@yachtregistration.company
+        // Create Admin
         $adminUser = array(
             'username' => "al-man traders",
             'password' => Hash::make('admin'),
@@ -50,6 +50,28 @@ class UsersTableSeeder extends Seeder
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         );
         $admin = User::create($adminUser);
-        $admin->assignRole('super_admin');
+        $admin->assignRole('super-admin');
+
+        // Create Sub Admin
+        $adminUser = array(
+            'username' => "al-man worker",
+            'password' => Hash::make('sub_admin'),
+            'email' => 'alamanWorker@gmail.com',
+            'phone_number' => config('app.number'),
+            'parent_id' => null,
+            'verified_at' => now()->format('Y-m-d H:i:s'),
+            'remember_token' => GeneralHelper::STR_RANDOM(50),
+            'email_verification_code' => null,
+            'level_completed' => 0,
+            'referer_code' => null,
+            'registration_code' => null,
+            'child_count' => 0,
+            'verify' => 1,
+            'status' => 1,
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+        );
+        $admin = User::create($adminUser);
+        $admin->assignRole('sub-admin');
     }
 }

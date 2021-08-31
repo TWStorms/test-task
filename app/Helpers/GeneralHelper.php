@@ -65,14 +65,14 @@ abstract class GeneralHelper
      */
     public static function GET_ROLE($user)
     {
-        if($user->user_type == IUserType::ADMIN)
-            return IUserRole::ADMIN;
+        if($user->hasRole('super-admin'))
+            return 'super-admin';
 
-        if($user->user_type == IUserType::SELLER)
-            return IUserRole::SELLER;
+        if($user->hasRole('sub-admin'))
+            return 'sub-admin';
 
-        if($user->user_type == IUserType::CONSUMER)
-            return IUserRole::CONSUMER;
+        if($user->hasRole('user'))
+            return 'user';
 
         return 'undefined';
     }
@@ -164,7 +164,7 @@ abstract class GeneralHelper
      *
      * @return bool
      */
-    public static function IS_ADMIN(): bool
+    public static function IS_SUPER_ADMIN(): bool
     {
         return Auth::user()->hasRole(['super_admin']);
     }

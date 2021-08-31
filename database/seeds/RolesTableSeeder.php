@@ -16,8 +16,8 @@ class RolesTableSeeder extends Seeder
      */
     public function run()
     {
-        Role::findOrCreate('super_admin', 'web');
-        Role::findOrCreate('sub_admin', 'web');
+        Role::findOrCreate('super-admin', 'web');
+        Role::findOrCreate('sub-admin', 'web');
         Role::findOrCreate('user', 'web');
     }
 }

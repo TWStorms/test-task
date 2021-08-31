@@ -40,6 +40,7 @@ class VerifyUserController extends Controller
         {
             $user->email_verification_code = null;
             $user->verify = 1;
+            $user->verified_at  = now()->format('Y-m-d H:i:s');
             $user->save();
             if(Auth::loginUsingId($user->id, true))
             {

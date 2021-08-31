@@ -24,6 +24,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => ['web']], static function () {
     Auth::routes(['login' => false]);
+    Auth::routes(['logout' => false]);
     Route::get('/login', function () {
         return redirect('/');
     })->name('login');
@@ -45,5 +46,21 @@ Route::group(['middleware' => ['guest']], static function () {
 
 });
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
+
+// Super Admin Routes
+Route::prefix('super-admin')->group(static function () {
+    Route::get('/dashboard', 'SuperAdmin\DashboardController@dashboard')->name('super-admin.dashboard');
+});
+
+// Sub Admin Routes
+Route::prefix('sub-admin')->group(static function () {
+    Route::get('/dashboard', 'SubAdmin\DashboardController@dashboard')->name('sub-admin.dashboard');
+});
+
+// User Routes
+Route::prefix('user')->group(static function () {
+    Route::get('/dashboard', 'User\DashboardController@dashboard')->name('user.dashboard');
+});
 
 

@@ -12,6 +12,7 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+
 {{--    <link rel="stylesheet" href="{{ asset('css/style.css') }}">--}}
 {{--    <link rel="stylesheet" href="{{ asset('css/log.css') }}">--}}
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -25,4 +26,13 @@
           href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
           crossorigin="anonymous">
+{{--    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"--}}
+{{--          integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">--}}
+{{----}}
+{{----}}
+{{--    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"--}}
+{{--          integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous" />--}}
+{{----}}
+{{--    <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>--}}
+{{--    <script src="{{asset('bootstrap/js/bootstrap.js/bootstrap.min.js')}}"></script>--}}
 </head>

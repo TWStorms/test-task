@@ -11,18 +11,20 @@
         {{--Load Navbar--}}
         @include('layouts.navbar')
 
-        <main class="py-4">
+        <main>
 
             {{--Load Body--}}
             @yield('content')
 
-            @yield('page-js')
+{{--            @yield('page-js')--}}
 
         </main>
     </div>
 
 
     {{--Load Footer--}}
-    @include('layouts.footer')
+    <div style="position: page; bottom: 0px; width: 100%;">
+        @include('layouts.footer')
+    </div>
 </body>
 </html>

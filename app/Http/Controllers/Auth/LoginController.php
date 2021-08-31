@@ -62,10 +62,17 @@ class LoginController extends Controller
      */
     public function redirectTo()
     {
-        $user = Auth::user();
-
-        if ($user) {
-            return '/home';
+        if($user = Auth::user())
+        {
+            if (GeneralHelper::IS_SUPER_ADMIN()){
+                return redirect('/super-admin/dashboard');
+            }
+            if (GeneralHelper::IS_SUB_ADMIN()){
+                return redirect('/sub-admin/dashboard');
+            }
+            if (GeneralHelper::IS_USER()){
+                return redirect('/user/dashboard');
+            }
         }
     }
 
@@ -127,7 +134,7 @@ class LoginController extends Controller
                 if($user->verify == 1)
                 {
                     Auth::loginUsingId($user->id, true);
-                    return GeneralHelper::SEND_RESPONSE($request, $user,'home',"Successfully logged in");
+                    return GeneralHelper::SEND_RESPONSE($request, $user,GeneralHelper::GET_ROLE($user).'.dashboard',"Successfully logged in");
                 }else{
                     return GeneralHelper::SEND_RESPONSE($request, null,'login',null, "Verify your email first");
                 }
