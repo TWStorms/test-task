@@ -16,6 +16,7 @@ use Illuminate\Contracts\Foundation\Application;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
 use App\Http\Contracts\ITransactionHistoryServiceContract;
 use Illuminate\Contracts\Container\BindingResolutionException;
+use Throwable;
 
 /**
  * Class WithdrawalRequestController
@@ -53,10 +54,11 @@ class WithdrawalRequestController extends Controller
 
     /**
      * Transaction index page
+     * @throws Throwable
      */
     public function index(Request $request)
     {
-        $transactions = ($request->ajax() && count($request->all()) > 0) ?
+        $transactions = (($request->ajax() && count($request->all()) > 0)) ?
             app(\App\Http\Services\SearchService::class)->search(
                 new \App\Models\TransactionHistory(),
                 \App\Http\Filters\TransactionHistoryFilter::class
@@ -107,7 +109,7 @@ class WithdrawalRequestController extends Controller
      */
     public function withdrawRequest(Request $request)
     {
-        $response = $this->_transactionService->sendWithdrawRequest(['phone_number' => $request->phone_number, 'method' => $request->transaction_method, 'amount' => $request->amount, 'user_id' => $request->userId, 'transaction_type' => ITransactionMethodTypes::CREDIT, 'withdrawal_request_status' => ITransactionMethodTypes::WITHDRAWAL_REQUEST_PENDING]);
+        $response = $this->_transactionService->sendWithdrawRequest(['phone_number' => $request->phone_number, 'method' => $request->transaction_method, 'amount' => $request->amount, 'user_id' => $request->userId, 'transaction_type' => ITransactionMethodTypes::DEBIT, 'withdrawal_request_status' => ITransactionMethodTypes::WITHDRAWAL_REQUEST_PENDING]);
 
         if($response)
             return redirect()->back()->with(['message' => "Withdrawal request send successfully", 'alert_type' => 'success']);

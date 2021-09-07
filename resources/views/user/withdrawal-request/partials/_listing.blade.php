@@ -1,4 +1,4 @@
-<table class='table table-hover text-center my-1' id="aims360_products" style="border-color: black;width:100% !important;">
+<table class='table table-hover text-center my-1' style="border-color: black;width:100% !important;">
     <thead>
     <tr class="text-black">
         <td><strong>{!! __('Transaction Id') !!}</strong></td>
