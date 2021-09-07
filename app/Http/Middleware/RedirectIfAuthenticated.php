@@ -20,7 +20,7 @@ class RedirectIfAuthenticated
      */
     public function handle($request, Closure $next, $guard = null)
     {
-
+        
 //        $user = \App\Models\User::where('email', $request->email)->first();
 //        Auth::loginUsingId($user->id, true);
 //        Auth::logout();

@@ -5,68 +5,14 @@
     <!-- Your code here -->
     @if(Auth::user()->status == 0)
     <div class="m-5">
-        <h4 class="text-center">Please contact on this number <b>({{config('app.number')}})</b> and send registration code to activate your account</h4>
-        <h4 class="text-center">Registration Code : <b>{{Auth::user()->registration_code}}</b></h4>
+        <h4 class="text-center">Please contact on this number <b>({{config('app.number')}})</b> to activate your account</h4>
     </div>
     @endif
     <div class="container-fluid" style="{{Auth::user()->status != 1 ? 'filter: blur(20px)' : ''}};">
         <div class="row" style="height: 100vh;">
             <div class="col-md-2 bg-purple px-0 d-md-block d-none " style="">
                 @if(Auth::user()->status == 1)
-                <div>
-                    <ul class="text-white decoration-none list-unstyled py-3">
-                        <li class="p-3 side-item active">
-                            <a class="text-white d-flex " href="">
-                                <div>
-                                    <i class="fas fa-home"></i>
-                                </div>
-                                <div class="ml-2 res-text">Dashboard</div>
-                            </a>
-                        </li>
-
-                        <li class="p-3 side-item ">
-                            <a class="text-white d-flex " href="">
-                                <div>
-                                    <i class="fas fa-user-alt"></i>
-                                </div>
-                                <div class="ml-2 res-text">My Profile</div>
-                            </a>
-                        </li>
-                        <li class="p-3 side-item">
-                            <a class="text-white d-flex " href="#">
-                                <div>
-                                    <i class="fas fa-network-wired"></i>
-                                </div>
-                                <div class="ml-2 res-text">My Network</div>
-                            </a>
-                        </li>
-                        <li class="p-3 side-item">
-                            <a class="text-white d-flex " href="#">
-                                <div>
-                                    <i class="fas fa-pound-sign"></i>
-                                </div>
-                                <div class="ml-2 res-text">Transactions</div>
-                            </a>
-
-                        </li>
-                        <li class="p-3 side-item">
-                            <a class="text-white d-flex" href="#">
-                                <div>
-                                    <i class="fas fa-briefcase"></i>
-                                </div>
-                                <div class="ml-2 res-text">Wallet</div>
-                            </a>
-                        </li>
-                        <li class="p-3 side-item">
-                            <a class="text-white d-flex " href="{{route('logout')}}">
-                                <div>
-                                    <i class="fas fa-sign-out-alt"></i>
-                                </div>
-                                <div class="ml-2 res-text">Logout</div>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+                    @include('user.navbar')
                 @endif
             </div>
             <div class="col-md-10 p-0 " style="" id="main-body">

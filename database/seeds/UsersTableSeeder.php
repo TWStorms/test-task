@@ -32,7 +32,7 @@ class UsersTableSeeder extends Seeder
 
         // Create Admin
         $adminUser = array(
-            'username' => "al-man traders",
+            'username' => "alaman",
             'password' => Hash::make('admin'),
             'email' => 'alaman@gmail.com',
             'phone_number' => '12345678',
@@ -41,11 +41,9 @@ class UsersTableSeeder extends Seeder
             'remember_token' => GeneralHelper::STR_RANDOM(50),
             'email_verification_code' => GeneralHelper::STR_RANDOM(50),
             'level_completed' => 0,
-            'referer_code' => GeneralHelper::STR_RANDOM(50),
-            'registration_code' => GeneralHelper::STR_RANDOM(50),
             'child_count' => 0,
-            'verify' => 1,
-            'status' => 1,
+            'verify' => \App\Helpers\IUserStatus::VERIFIED,
+            'status' => \App\Helpers\IUserStatus::ACTIVE,
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         );
@@ -54,24 +52,42 @@ class UsersTableSeeder extends Seeder
 
         // Create Sub Admin
         $adminUser = array(
-            'username' => "al-man worker",
+            'username' => "alaman Worker",
             'password' => Hash::make('sub_admin'),
             'email' => 'alamanWorker@gmail.com',
             'phone_number' => config('app.number'),
             'parent_id' => null,
             'verified_at' => now()->format('Y-m-d H:i:s'),
             'remember_token' => GeneralHelper::STR_RANDOM(50),
-            'email_verification_code' => null,
+            'email_verification_code' => GeneralHelper::STR_RANDOM(50),
             'level_completed' => 0,
-            'referer_code' => null,
-            'registration_code' => null,
             'child_count' => 0,
-            'verify' => 1,
-            'status' => 1,
+            'verify' => \App\Helpers\IUserStatus::VERIFIED,
+            'status' => \App\Helpers\IUserStatus::ACTIVE,
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         );
         $admin = User::create($adminUser);
         $admin->assignRole('sub-admin');
+
+        // Create Sub Admin
+        $user = array(
+            'username' => "waleed",
+            'password' => Hash::make('user123'),
+            'email' => 'waleedbinkhalid84587@gmail.com',
+            'phone_number' => '032292301928',
+            'parent_id' => 1,
+            'verified_at' => now()->format('Y-m-d H:i:s'),
+            'remember_token' => GeneralHelper::STR_RANDOM(50),
+            'email_verification_code' => null,
+            'level_completed' => 0,
+            'child_count' => 0,
+            'verify' => \App\Helpers\IUserStatus::VERIFIED,
+            'status' => \App\Helpers\IUserStatus::ACTIVE,
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+        );
+        $user = User::create($user);
+        $user->assignRole('user');
     }
 }

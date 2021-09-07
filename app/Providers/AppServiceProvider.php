@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Http\Contracts\ITransactionHistoryServiceContract;
+use App\Http\Services\TransactionHistoryService;
 use App\Http\Services\UserService;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
@@ -33,9 +35,12 @@ class AppServiceProvider extends ServiceProvider
     {
         Schema::defaultStringLength(191);
 
-        # GraphQlProduct Services
         $this->app->singleton(IUserServiceContract::class, function ($app) {
             return $app->make(UserService::class);
+        });
+
+        $this->app->singleton(ITransactionHistoryServiceContract::class, function ($app) {
+            return $app->make(TransactionHistoryService::class);
         });
     }
 }

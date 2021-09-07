@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Helpers\GeneralHelper;
+use App\Helpers\IUserStatus;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
@@ -105,7 +106,11 @@ class RegisterController extends Controller
 
     public function registerUser(Request $request)
     {
-        if($parent = \App\Models\User::where('referer_code', $request->referer_code)->first()) {
+        if($exist = \App\Models\User::where('username', $request->username)->first())
+        {
+            return GeneralHelper::SEND_RESPONSE($request, null,'login', null, "Username already exist");
+        }
+        if($parent = \App\Models\User::where('username', $request->referer_username)->first()) {
             $user = \App\Models\User::create([
                 'username' => $request->username,
                 'email' => $request->email,
@@ -115,12 +120,10 @@ class RegisterController extends Controller
                 'level_completed' => 0,
                 'child_count' => 0,
                 'verified_at' => now()->format('Y-m-d H:i:s'),
-                'referer_code' => GeneralHelper::STR_RANDOM(50),
-                'registration_code' => GeneralHelper::STR_RANDOM(50),
                 'remember_token' => GeneralHelper::STR_RANDOM(50),
                 'email_verification_code' => GeneralHelper::STR_RANDOM(50),
-                'verify' => 0,
-                'status' => 0,
+                'verify' => IUserStatus::NOT_VERIFIED,
+                'status' => IUserStatus::IN_ACTIVE,
             ]);
             $user->assignRole('user');
 

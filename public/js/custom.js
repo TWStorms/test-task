@@ -8,16 +8,6 @@ Window.Laravel = {
     selfId: '',
 };
 
-$(() => {
-    let $body = $('body');
-    $body.on('submit', 'form.ajaxSearch', async function(e) {
-        e.preventDefault();
-        await ajaxRequest($(this).attr('href'), 'get', $(this).serialize()).then(res => {
-            $('.render').html(res.view);
-        })
-    });
-});
-
 /**
  * Ajax Request
  *
@@ -370,6 +360,25 @@ $(() => {
     // preLoader('show');
 
     let $body = $('body');
+    $body.on('submit', 'form.ajaxSearch', async function(e) {
+        e.preventDefault();
+        await ajaxRequest($(this).attr('href'), 'get', $(this).serialize()).then(res => {
+            $('.render').html(res.view);
+        })
+    });
+
+    // Pagination
+    $body.on('click', `.${Window.Laravel.paginationClass}`, async function (e) {
+        e.preventDefault();
+        let href = $(this).attr('href')
+        if (href === undefined)
+            return;
+
+        await ajaxRequest(href, 'GET', null, true).then(res => {
+            $body.find(`.${Window.Laravel.listClass}`).html(res.view);
+        });
+    });
+
     $body.on('submit', '.ajax', async function (e) {
         e.preventDefault();
         let data = null, form = $(this), id = $(this).attr('id');

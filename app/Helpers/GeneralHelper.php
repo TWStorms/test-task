@@ -166,7 +166,7 @@ abstract class GeneralHelper
      */
     public static function IS_SUPER_ADMIN(): bool
     {
-        return Auth::user()->hasRole(['super_admin']);
+        return Auth::user()->hasRole(['super-admin']);
     }
 
     /**
@@ -176,7 +176,7 @@ abstract class GeneralHelper
      */
     public static function IS_SUB_ADMIN(): bool
     {
-        return Auth::user()->hasRole(['sub_admin']);
+        return Auth::user()->hasRole(['sub-admin']);
     }
 
     /**

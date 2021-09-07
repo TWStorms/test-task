@@ -22,7 +22,7 @@ use Illuminate\Support\Facades\Route;
 //Route::get('/home', 'HomeController@index')->name('home');
 
 
-Route::group(['middleware' => ['web']], static function () {
+Route::group(['middleware' => ['web', 'check-user-login']], static function () {
     Auth::routes(['login' => false]);
     Auth::routes(['logout' => false]);
     Route::get('/login', function () {
@@ -56,11 +56,18 @@ Route::prefix('super-admin')->group(static function () {
 // Sub Admin Routes
 Route::prefix('sub-admin')->group(static function () {
     Route::get('/dashboard', 'SubAdmin\DashboardController@dashboard')->name('sub-admin.dashboard');
+    Route::get('/awaiting-approval', 'SubAdmin\UserController@awaitingApproval')->name('sub-admin.awaiting-approval');
+    Route::post('/user/activate', 'SubAdmin\UserController@activateUser')->name('sub-admin.user-activate');
+    Route::get('/withdrawal-requests', 'SubAdmin\WithdrawalRequestController@index')->name('sub-admin.withdrawal-requests');
+    Route::get('/approve/withdrawal-request/{id}', 'SubAdmin\WithdrawalRequestController@approveWithdrawalRequest')->name('sub-admin.withdrawal-request.approve');
+    Route::get('/decline/withdrawal-requests{id}', 'SubAdmin\WithdrawalRequestController@declineWithdrawalRequest')->name('sub-admin.withdrawal-request.decline');
 });
 
 // User Routes
 Route::prefix('user')->group(static function () {
     Route::get('/dashboard', 'User\DashboardController@dashboard')->name('user.dashboard');
+    Route::get('/withdrawal-requests', 'User\WithdrawalRequestController@index')->name('user.withdrawal-requests');
+    Route::post('/withdrawal-request', 'User\WithdrawalRequestController@withdrawRequest')->name('user.withdraw-request');
 });
 
 

@@ -15,16 +15,14 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('username');
+            $table->string('username')->unique();
             $table->string('email')->unique();
             $table->timestamp('verified_at')->nullable();
             $table->string('password');
             $table->string('phone_number');
             $table->integer('parent_id')->nullable();
-            $table->longText('referer_code')->comment("")->nullable();
             $table->longText('email_verification_code')->nullable()->nullable()->comment("Code to verify email");
             $table->integer('level_completed')->comment("levels completed by user");
-            $table->longText('registration_code')->nullable()->comment("for completing user registration");
             $table->integer('child_count')->comment("total child");
             $table->boolean('verify')->comment("0 = verify, 1 = un-verify");
             $table->boolean('status')->comment("0 = active, 1 = in-active");

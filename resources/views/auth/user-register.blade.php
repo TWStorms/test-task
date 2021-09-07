@@ -45,7 +45,7 @@
                             </div>
                             <div class="form-group ">
                                 <div class="row">
-                                    <div class="col py-2"><input type="text" class="form-control" name="referer_code" placeholder="Reference Code" required="required"></div>
+                                    <div class="col py-2"><input type="text" class="form-control" name="referer_username" placeholder="Reference Username" required="required"></div>
                                 </div>
                             </div>
                             <div class="form-group text-white">

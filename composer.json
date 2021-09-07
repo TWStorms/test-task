@@ -16,8 +16,8 @@
         "laravel/tinker": "^2.5",
         "laravel/ui": "^2.4",
         "laravelcollective/html": "^6.2",
-        "spatie/laravel-permission": "^4.3",
-      "ext-http": "*"
+        "mohammad-fouladgar/eloquent-builder": "^3.1",
+        "spatie/laravel-permission": "^4.3"
     },
     "require-dev": {
         "facade/ignition": "^2.0",

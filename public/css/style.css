@@ -10,9 +10,6 @@ body{
     --light-gray: #c4c4c4;
     --purple: #6d6ccd;
 }
-img {
-    width: 100%;
-}
 a{
     text-decoration: none;
 }

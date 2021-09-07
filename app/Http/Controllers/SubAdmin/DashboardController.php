@@ -50,6 +50,7 @@ class DashboardController extends Controller
      */
     public function dashboard()
     {
-        return view(self::DASHBOARD_PAGE);
+        $count = $this->_userService->getAwaitingApprovalUsersCount();
+        return view(self::DASHBOARD_PAGE, compact('count'));
     }
 }
