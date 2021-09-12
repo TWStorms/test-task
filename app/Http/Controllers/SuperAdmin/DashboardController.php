@@ -8,11 +8,13 @@ use App\Helpers\GeneralHelper;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Routing\Redirector;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Contracts\View\Factory;
 use App\Http\Contracts\IUserServiceContract;
 use Illuminate\Contracts\Foundation\Application;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
+use App\Http\Contracts\ITransactionHistoryServiceContract;
 use Illuminate\Contracts\Container\BindingResolutionException;
 
 /**
@@ -34,15 +36,25 @@ class DashboardController extends Controller
     private $_userService;
 
     /**
+     * Interface ITransactionHistoryServiceContract
+     *
+     * @var ITransactionHistoryServiceContract
+     */
+    private $_transactionService;
+
+    /**
      * DashboardController constructor.
      *
      * @param IUserServiceContract $_userService
+     * @param ITransactionHistoryServiceContract $_transactionService
      */
     public function __construct(
-        IUserServiceContract $_userService
+        IUserServiceContract $_userService,
+        ITransactionHistoryServiceContract $_transactionService
     )
     {
         $this->_userService = $_userService;
+        $this->_transactionService = $_transactionService;
     }
 
     /**
@@ -50,6 +62,8 @@ class DashboardController extends Controller
      */
     public function dashboard()
     {
-        return view(self::DASHBOARD_PAGE);
+        $transactionCount = $this->_transactionService->getTransactionForSpecificUserCount(['user_id' => Auth::id(), 'withdrawal_request_status' => null]);
+        $userCount = $this->_userService->getChildrensCount(Auth::id());
+        return view(self::DASHBOARD_PAGE, compact('transactionCount', 'userCount'));
     }
 }

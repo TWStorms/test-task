@@ -1,0 +1,77 @@
+{
+  "_from": "mmp",
+  "_id": "mmp@0.2.20",
+  "_inBundle": false,
+  "_integrity": "sha512-WnX65ASwoTLe/H/2EEW+rBoBVhyuo+x/enfEWlrGcIed2o3V9H6vSb5ZDaMYHTZarpg66Pi9tNrWfey1PQUkwg==",
+  "_location": "/mmp",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "mmp",
+    "name": "mmp",
+    "escapedName": "mmp",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/mmp/-/mmp-0.2.20.tgz",
+  "_shasum": "4e8b3ee437210b65fffca8a50e07db61d6c68c9c",
+  "_spec": "mmp",
+  "_where": "/var/www/html/tws/laravel/mlm",
+  "author": {
+    "name": "Omar Desogus",
+    "email": "me@cedoor.dev",
+    "url": "https://cedoor.dev"
+  },
+  "bugs": {
+    "url": "https://github.com/Mindmapp/mmp/issues"
+  },
+  "bundleDependencies": false,
+  "dependencies": {
+    "d3": "5.5.0"
+  },
+  "deprecated": false,
+  "description": "JavaScript library to draw mind maps.",
+  "devDependencies": {
+    "@types/d3": "5.0.0",
+    "chai": "4.1.2",
+    "mocha": "5.2.0",
+    "rollup": "0.64.1",
+    "rollup-plugin-json": "3.0.0",
+    "rollup-plugin-livereload": "0.6.0",
+    "rollup-plugin-serve": "0.4.2",
+    "rollup-plugin-typescript2": "^0.27.1",
+    "typedoc": "^0.17.7",
+    "typescript": "3.0.1",
+    "uglify-js": "3.4.7"
+  },
+  "homepage": "https://github.com/Mindmapp/mmp",
+  "keywords": [
+    "mmp",
+    "mindmap",
+    "node",
+    "branch",
+    "map",
+    "mind",
+    "infovis"
+  ],
+  "license": "MIT",
+  "main": "build/mmp.min.js",
+  "name": "mmp",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mindmapp/mmp.git"
+  },
+  "scripts": {
+    "build": "rollup -c --environment BUILD:production && uglifyjs build/mmp.js --comments -c -m -o build/mmp.min.js",
+    "docs": "typedoc ./src --out ./docs --module umd",
+    "prepare": "npm run build",
+    "start": "rollup -c -w"
+  },
+  "version": "0.2.20"
+}

@@ -17,7 +17,7 @@ class CreateTransactionHistoriesTable extends Migration
             $table->id();
             $table->string('transaction_id')->nullable();
             $table->string('phone_number')->nullable();
-            $table->integer('method');
+            $table->integer('method')->nullable();
             $table->double('amount');
             $table->Biginteger('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

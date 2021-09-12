@@ -34,4 +34,27 @@ interface IUserServiceContract
      */
     public function activate($id);
 
+    /**
+     * @param $userId
+     *
+     * @return mixed
+     */
+    public function findById($userId);
+
+    /**
+     * @param $parentId
+     *
+     * @return mixed
+     */
+    public function getChildrens($parentId);
+
+    /**
+     * @param $parentId
+     *
+     * @return mixed
+     */
+    public function getChildrensCount($parentId);
+
+
+
 }

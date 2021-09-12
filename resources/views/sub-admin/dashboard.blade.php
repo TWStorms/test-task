@@ -3,16 +3,16 @@
 @section('content')
     {{--<div class="container">--}}
     <!-- Your code here -->
-    @if(Auth::user()->status == 0)
+    @if(Auth::user()->status == \App\Helpers\IUserStatus::IN_ACTIVE)
         <div class="m-5">
             <h4 class="text-center">Please contact on this number <b>({{config('app.number')}})</b> and send registration code to activate your account</h4>
             <h4 class="text-center">Registration Code : <b>{{Auth::user()->registration_code}}</b></h4>
         </div>
     @endif
-    <div class="container-fluid" style="{{Auth::user()->status != 1 ? 'filter: blur(20px)' : ''}};">
+    <div class="container-fluid" style="{{Auth::user()->status != \App\Helpers\IUserStatus::ACTIVE ? 'filter: blur(20px)' : ''}};">
         <div class="row" style="height: 100vh;">
             <div class="col-md-2 bg-purple px-0 d-md-block d-none " style="">
-                @if(Auth::user()->status == 1)
+                @if(Auth::user()->status == \App\Helpers\IUserStatus::ACTIVE)
                     @include('sub-admin.navbar')
                 @endif
             </div>
@@ -28,15 +28,15 @@
                             <!-- small box -->
                             <a href="{{route('sub-admin.awaiting-approval')}}" style="text-decoration: none;">
                                 <div class="small-box text-white d-flex justify-content-between" id="box-2">
-                                    @if(Auth::user()->status == 1)
+                                    @if(Auth::user()->status == \App\Helpers\IUserStatus::ACTIVE)
                                         <div class="inner pl-3">
                                             <h5>Awaiting Approval</h5>
 
-                                            <h4 class="m-0 my-1"><b>{{$count ?? 0}}</b></h4>
+                                            <h4 class="m-0 my-1"><b>{{$userCount ?? 0}}</b></h4>
 
                                         </div>
-                                        <div class="icon ">
-                                            <i class="fas fa-chart-pie" style="font-size: 70px; margin:10px 10px 0 0px; color: white; opacity: 10%;"></i>
+                                        <div class="icon">
+                                            <i class="fas fa-users" style="font-size: 70px; margin:10px 10px 0 0px; color: white; opacity: 20%;"></i>
                                         </div>
                                     @endif
                                 </div>
@@ -45,45 +45,29 @@
                         <!-- ./col -->
                         <div class="col-lg-3 col-md-6 col-12">
                             <!-- small box -->
-                            <div class="small-box text-white text-left d-flex justify-content-between" id="box-3">
-                                @if(Auth::user()->status == 1)
+                            <a href="{{route('sub-admin.withdrawal-requests')}}" style="text-decoration: none;">
+                                <div class="small-box text-white text-left d-flex justify-content-between" id="box-3">
+                                @if(Auth::user()->status == \App\Helpers\IUserStatus::ACTIVE)
                                     <div class="inner pl-3">
-                                        <h5>i100 Price</h5>
+                                        <h5>Withdrawal Request</h5>
 
-                                        <p class="m-0 my-1">Price 61.00P</p>
-
-                                    </div>
-                                    <div class="icon">
-                                        <i class="fas fa-users" style="font-size: 70px; margin:10px 10px 0 0px; color: white; opacity: 20%;"></i>
-                                    </div>
-                                @endif
-                            </div>
-                        </div>
-                        <!-- ./col -->
-                        <div class="col-lg-3 col-md-6 col-12">
-                            <!-- small box -->
-                            <div class="small-box text-left d-flex justify-content-between" id="box-4">
-                                @if(Auth::user()->status == 1)
-                                    <div class="inner text-white pl-3">
-                                        <h5>Total Bonus</h5>
-
-                                        <p class="m-0 my-1">Last Week: £0.00</p>
+                                        <h4 class="m-0 my-1"><b>{{$withdrawalCount ?? 0}}</b></h4>
 
                                     </div>
-                                    <div class="icon">
-                                        <i class="fas fa-percent" style="font-size: 70px; margin:10px 20px 0 0px; color: white; opacity: 20%;"></i>
+                                    <div class="icon ">
+                                        <i class="fas fa-chart-pie" style="font-size: 70px; margin:10px 10px 0 0px; color: white; opacity: 10%;"></i>
                                     </div>
                                 @endif
                             </div>
+                            </a>
                         </div>
-                        <!-- ./col -->
                     </div>
                     <!-- /.row -->
 
                 </main>
                 <div class=" px-0 col-12 footer-div d-flex justify-content-center align-items-center">
                     <footer class="">
-                        <p class="mb-0">Copyright &copy; 2021 all rights reserved</p </footer>
+                        <p class="mb-0">Copyright &copy; 2021 all rights reserved</p></footer>
                 </div>
             </div>
 

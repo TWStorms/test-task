@@ -51,6 +51,8 @@ Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
 // Super Admin Routes
 Route::prefix('super-admin')->group(static function () {
     Route::get('/dashboard', 'SuperAdmin\DashboardController@dashboard')->name('super-admin.dashboard');
+    Route::get('/transactions', 'SuperAdmin\TransactionController@index')->name('super-admin.transactions');
+    Route::get('/users', 'SuperAdmin\UserController@index')->name('super-admin.users');
 });
 
 // Sub Admin Routes
@@ -68,6 +70,11 @@ Route::prefix('user')->group(static function () {
     Route::get('/dashboard', 'User\DashboardController@dashboard')->name('user.dashboard');
     Route::get('/withdrawal-requests', 'User\WithdrawalRequestController@index')->name('user.withdrawal-requests');
     Route::post('/withdrawal-request', 'User\WithdrawalRequestController@withdrawRequest')->name('user.withdraw-request');
+    Route::get('/users', 'User\UserController@index')->name('user.children');
+    Route::get('/transactions', 'User\TransactionController@index')->name('user.transactions');
 });
 
 
+//Route::get('/Test', function (){
+//   app()->make(\App\Http\Controllers\SubAdmin\UserController::class)->auditUserWallet(1);
+//});

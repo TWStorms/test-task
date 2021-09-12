@@ -4,9 +4,9 @@
      'url' => route('user.withdrawal-requests')]) !!}
     <div>
         <div class="row">
-            <div class="col-md-3 mt-3">
-                {!! Form::text('transaction_id', request('transaction_id') ?? null, ['id' => 'transaction_id', 'class' => 'form-control', 'placeholder' => __('Transaction Id')]) !!}
-            </div>
+{{--            <div class="col-md-3 mt-3">--}}
+{{--                {!! Form::text('transaction_id', request('transaction_id') ?? null, ['id' => 'transaction_id', 'class' => 'form-control', 'placeholder' => __('Transaction Id')]) !!}--}}
+{{--            </div>--}}
             <div class="col-md-3 mt-3">
                 {!! Form::select('method',['1' => 'Jazzcash', '2' => 'Easypaisa'], request('method') ?? null, ['id' => 'method', 'class' => 'form-control', 'placeholder' => __('Method')]) !!}
             </div>

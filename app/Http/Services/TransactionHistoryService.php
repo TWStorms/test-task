@@ -82,4 +82,43 @@ class TransactionHistoryService implements ITransactionHistoryServiceContract
         return $this->_transactionHistoryRepo->insert($array);
     }
 
+    /**
+     * @return mixed|void
+     */
+    public function getWithdrawalRequestCount()
+    {
+        return $this->_transactionHistoryRepo->findByClause(['withdrawal_request_status' => ITransactionMethodTypes::WITHDRAWAL_REQUEST_PENDING])->count();
+    }
+
+    /**
+     * @param $array
+     *
+     * @return mixed
+     */
+    public function where($array)
+    {
+        return $this->_transactionHistoryRepo->findByClause($array)->first();
+    }
+
+    /**
+     * @param $array
+     *
+     * @return mixed
+     */
+    public function getTransactionForSpecificUser($array)
+    {
+        return $this->_transactionHistoryRepo->findByClause($array)->paginate(GeneralHelper::PAGINATION_SIZE());
+    }
+
+    /**
+     * @param $array
+     *
+     * @return mixed
+     */
+    public function getTransactionForSpecificUserCount($array)
+    {
+        return $this->_transactionHistoryRepo->findByClause($array)->count();
+    }
+
+
 }

@@ -1,7 +1,7 @@
 <table class='table table-hover text-center my-1' style="border-color: black;width:100% !important;">
     <thead>
     <tr class="text-black">
-        <td><strong>{!! __('Transaction Id') !!}</strong></td>
+{{--        <td><strong>{!! __('Transaction Id') !!}</strong></td>--}}
         <td><strong>{!! __('Method') !!}</strong></td>
         <td><strong>{!! __('Amount') !!}</strong></td>
         <td><strong>{!! __('Type') !!}</strong></td>
@@ -12,7 +12,7 @@
     @if($transactions->count() > 0)
         @foreach($transactions as $key => $transaction)
             <tr>
-                <td>{!! __($transaction->transaction_id) !!}</td>
+{{--                <td>{!! __($transaction->transaction_id) !!}</td>--}}
                 <td>
                     @if($transaction->method == \App\Helpers\ITransactionMethodTypes::JAZZCASH)
                         <img src="{{asset('assets/images/jazzcash.jpg')}}" width="30px;"> Jazzcash

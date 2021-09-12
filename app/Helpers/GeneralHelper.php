@@ -162,30 +162,39 @@ abstract class GeneralHelper
     /**
      * Check For SuperAdmin
      *
+     * @param null $user
      * @return bool
      */
-    public static function IS_SUPER_ADMIN(): bool
+    public static function IS_SUPER_ADMIN($user = null): bool
     {
+        if($user)
+            return $user->hasRole(['super-admin']);
         return Auth::user()->hasRole(['super-admin']);
     }
 
     /**
      * Check For SuperAdmin
      *
+     * @param null $user
      * @return bool
      */
-    public static function IS_SUB_ADMIN(): bool
+    public static function IS_SUB_ADMIN($user = null): bool
     {
+        if($user)
+            return $user->hasRole(['sub-admin']);
         return Auth::user()->hasRole(['sub-admin']);
     }
 
     /**
      * Check For SuperAdmin
      *
+     * @param null $user
      * @return bool
      */
-    public static function IS_USER(): bool
+    public static function IS_USER($user = null): bool
     {
+        if($user)
+            return $user->hasRole(['user']);
         return Auth::user()->hasRole(['user']);
     }
 

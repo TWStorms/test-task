@@ -2,6 +2,10 @@
 
 namespace App\Models;
 
+use App\Helpers\IUserStatus;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -37,4 +41,28 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * @return HasOne
+     */
+    public function wallet()
+    {
+        return $this->hasOne(Wallet::class);
+    }
+
+    /**
+     * @return BelongsTo
+     */
+    public function parent()
+    {
+        return $this->belongsTo(self::class,'parent_id');
+    }
+
+    /**
+     * @return HasMany
+     */
+    public function childrens()
+    {
+        return $this->hasMany(self::class,'parent_id')->where('status', IUserStatus::ACTIVE);
+    }
 }

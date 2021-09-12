@@ -39,4 +39,31 @@ interface ITransactionHistoryServiceContract
      * @return mixed
      */
     public function sendWithdrawRequest($array);
+
+    /**
+     * @return mixed
+     */
+    public function getWithdrawalRequestCount();
+
+    /**
+     * @param $array
+     *
+     * @return mixed
+     */
+    public function where($array);
+
+    /**
+     * @param $array
+     *
+     * @return mixed
+     */
+    public function getTransactionForSpecificUser($array);
+
+    /**
+     * @param $array
+     *
+     * @return mixed
+     */
+    public function getTransactionForSpecificUserCount($array);
+
 }

@@ -52,4 +52,3 @@
         $('#activateUser').modal('toggle');
     }
 </script>
-{{--{!! $products->render() !!}--}}

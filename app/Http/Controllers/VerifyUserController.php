@@ -44,7 +44,7 @@ class VerifyUserController extends Controller
             $user->save();
             if(Auth::loginUsingId($user->id, true))
             {
-                return GeneralHelper::SEND_RESPONSE($request, $user,'home', "You have successfully log in.");
+                return GeneralHelper::SEND_RESPONSE($request, $user,GeneralHelper::GET_ROLE(Auth::user()).'.dashboard', "You have successfully log in.");
             }
         }
 

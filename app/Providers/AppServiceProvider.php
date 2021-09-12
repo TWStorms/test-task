@@ -3,8 +3,10 @@
 namespace App\Providers;
 
 use App\Http\Contracts\ITransactionHistoryServiceContract;
+use App\Http\Contracts\IWalletServiceContract;
 use App\Http\Services\TransactionHistoryService;
 use App\Http\Services\UserService;
+use App\Http\Services\WalletService;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 use App\Http\Contracts\IUserServiceContract;
@@ -41,6 +43,10 @@ class AppServiceProvider extends ServiceProvider
 
         $this->app->singleton(ITransactionHistoryServiceContract::class, function ($app) {
             return $app->make(TransactionHistoryService::class);
+        });
+
+        $this->app->singleton(IWalletServiceContract::class, function ($app) {
+            return $app->make(WalletService::class);
         });
     }
 }

@@ -13,6 +13,7 @@ use Illuminate\Contracts\View\Factory;
 use App\Http\Contracts\IUserServiceContract;
 use Illuminate\Contracts\Foundation\Application;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
+use App\Http\Contracts\ITransactionHistoryServiceContract;
 use Illuminate\Contracts\Container\BindingResolutionException;
 
 /**
@@ -34,15 +35,25 @@ class DashboardController extends Controller
     private $_userService;
 
     /**
+     * Interface ITransactionHistoryServiceContract
+     *
+     * @var ITransactionHistoryServiceContract
+     */
+    private $_transactionService;
+
+    /**
      * DashboardController constructor.
      *
      * @param IUserServiceContract $_userService
+     * @param ITransactionHistoryServiceContract $_transactionService
      */
     public function __construct(
-        IUserServiceContract $_userService
+        IUserServiceContract $_userService,
+        ITransactionHistoryServiceContract $_transactionService
     )
     {
         $this->_userService = $_userService;
+        $this->_transactionService = $_transactionService;
     }
 
     /**
@@ -50,7 +61,8 @@ class DashboardController extends Controller
      */
     public function dashboard()
     {
-        $count = $this->_userService->getAwaitingApprovalUsersCount();
-        return view(self::DASHBOARD_PAGE, compact('count'));
+        $userCount = $this->_userService->getAwaitingApprovalUsersCount();
+        $withdrawalCount = $this->_transactionService->getWithdrawalRequestCount();
+        return view(self::DASHBOARD_PAGE, compact('userCount', 'withdrawalCount'));
     }
 }

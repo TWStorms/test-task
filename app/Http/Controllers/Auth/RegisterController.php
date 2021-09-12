@@ -6,7 +6,9 @@ use App\Helpers\GeneralHelper;
 use App\Helpers\IUserStatus;
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\Wallet;
 use App\Providers\RouteServiceProvider;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
@@ -104,13 +106,24 @@ class RegisterController extends Controller
         }
     }
 
+    /**
+     * @param Request $request
+     *
+     * @return JsonResponse|RedirectResponse|Redirector
+     */
     public function registerUser(Request $request)
     {
-        if($exist = \App\Models\User::where('username', $request->username)->first())
+        if(\App\Models\User::where('username', $request->username)->first() || \App\Models\User::where('email', $request->email)->first())
         {
             return GeneralHelper::SEND_RESPONSE($request, null,'login', null, "Username already exist");
         }
-        if($parent = \App\Models\User::where('username', $request->referer_username)->first()) {
+
+        if($parent = \App\Models\User::where('username', $request->referer_username)->first())
+        {
+            if($parent->level_completed == 7)
+                return GeneralHelper::SEND_RESPONSE($request, null,'login', null, "User levels has already been completed");
+
+
             $user = \App\Models\User::create([
                 'username' => $request->username,
                 'email' => $request->email,
@@ -126,9 +139,6 @@ class RegisterController extends Controller
                 'status' => IUserStatus::IN_ACTIVE,
             ]);
             $user->assignRole('user');
-
-            $parent->child_count += 1;
-            $parent->save();
 
             GeneralHelper::mail(array('name' => $user->username, 'token' => $user->email_verification_code), $user->username, $user->email, self::VERIFICATION_EMAIL);
 

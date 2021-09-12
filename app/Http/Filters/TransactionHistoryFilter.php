@@ -41,4 +41,12 @@ class TransactionHistoryFilter extends Filter
     {
         $this->query->Where(__FUNCTION__, $this->args);
     }
+
+    /**
+     * user_id Filter
+     */
+    public function user_id()
+    {
+        $this->query->Where(__FUNCTION__, $this->args);
+    }
 }

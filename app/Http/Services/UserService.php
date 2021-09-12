@@ -67,4 +67,34 @@ class UserService implements IUserServiceContract
     {
         return $this->_userRepo->findById($id)->update(['status'=> IUserStatus::ACTIVE]);
     }
+
+    /**
+     * @param $userId
+     *
+     * @return object
+     */
+    public function findById($userId)
+    {
+        return $this->_userRepo->findById($userId);
+    }
+
+    /**
+     * @param $parentId
+     *
+     * @return mixed|void
+     */
+    public function getChildrens($parentId)
+    {
+        return $this->_userRepo->findByClause(['parent_id' => $parentId])->paginate(GeneralHelper::PAGINATION_SIZE());
+    }
+
+    /**
+     * @param $parentId
+     *
+     * @return mixed|void
+     */
+    public function getChildrensCount($parentId)
+    {
+        return $this->_userRepo->findByClause(['parent_id' => $parentId])->count();
+    }
 }

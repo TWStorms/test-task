@@ -25,7 +25,7 @@ class CreateUsersTable extends Migration
             $table->integer('level_completed')->comment("levels completed by user");
             $table->integer('child_count')->comment("total child");
             $table->boolean('verify')->comment("0 = verify, 1 = un-verify");
-            $table->boolean('status')->comment("0 = active, 1 = in-active");
+            $table->boolean('status')->comment("2 = active, 1 = in-active");
             $table->rememberToken();
             $table->timestamps();
         });

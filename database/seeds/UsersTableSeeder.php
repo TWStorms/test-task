@@ -69,25 +69,5 @@ class UsersTableSeeder extends Seeder
         );
         $admin = User::create($adminUser);
         $admin->assignRole('sub-admin');
-
-        // Create Sub Admin
-        $user = array(
-            'username' => "waleed",
-            'password' => Hash::make('user123'),
-            'email' => 'waleedbinkhalid84587@gmail.com',
-            'phone_number' => '032292301928',
-            'parent_id' => 1,
-            'verified_at' => now()->format('Y-m-d H:i:s'),
-            'remember_token' => GeneralHelper::STR_RANDOM(50),
-            'email_verification_code' => null,
-            'level_completed' => 0,
-            'child_count' => 0,
-            'verify' => \App\Helpers\IUserStatus::VERIFIED,
-            'status' => \App\Helpers\IUserStatus::ACTIVE,
-            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
-            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
-        );
-        $user = User::create($user);
-        $user->assignRole('user');
     }
 }

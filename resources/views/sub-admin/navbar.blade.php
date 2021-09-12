@@ -10,19 +10,11 @@
         </li>
 
         <li class="p-3 side-item ">
-            <a class="text-white d-flex " href="">
+            <a class="text-white d-flex " href="{{route('sub-admin.awaiting-approval')}}">
                 <div>
                     <i class="fas fa-user-alt"></i>
                 </div>
-                <div class="ml-2 res-text">My Profile</div>
-            </a>
-        </li>
-        <li class="p-3 side-item">
-            <a class="text-white d-flex " href="#">
-                <div>
-                    <i class="fas fa-network-wired"></i>
-                </div>
-                <div class="ml-2 res-text">My Network</div>
+                <div class="ml-2 res-text">Awaiting Approval</div>
             </a>
         </li>
         <li class="p-3 side-item">
@@ -31,15 +23,6 @@
                     <i class="fas fa-pound-sign"></i>
                 </div>
                 <div class="ml-2 res-text">Withdrawal Requests</div>
-            </a>
-
-        </li>
-        <li class="p-3 side-item">
-            <a class="text-white d-flex" href="#">
-                <div>
-                    <i class="fas fa-briefcase"></i>
-                </div>
-                <div class="ml-2 res-text">Wallet</div>
             </a>
         </li>
         <li class="p-3 side-item">
