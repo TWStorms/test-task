@@ -2,11 +2,16 @@
 
 namespace App\Http\Controllers\SuperAdmin;
 
+use App\Helpers\IMMPConfig;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use App\Helpers\GeneralHelper;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Contracts\IUserServiceContract;
+use Illuminate\View\View;
 
 /**
  * Class UserController
@@ -18,6 +23,7 @@ class UserController extends Controller
 
     # Pages
     const INDEX_PAGE = 'super-admin.user.index';
+    const MAP_PAGE = 'super-admin.map';
     const LISTING_PAGE = 'super-admin.user.partials._listing';
 
     /**
@@ -26,6 +32,48 @@ class UserController extends Controller
      * @var IUserServiceContract
      */
     private $_userService;
+
+    /**
+     * Nodes Counter
+     *
+     * @var int
+     */
+    private $_node = 0;
+
+    /**
+     * Sigma Data Collection <Build>
+     *
+     * @var array
+     */
+    private $_sigmaDataCollection = [];
+
+    /**
+     * Edge Counter
+     *
+     * @var int
+     */
+    private $_edge = 0;
+
+    /**
+     * Nodes Container
+     *
+     * @var array
+     */
+    private $_nodesCollection = [];
+
+    /**
+     * Edges Container
+     *
+     * @var array
+     */
+    private $_edgesCollection = [];
+
+    /**
+     * Sub Nodes Container
+     *
+     * @var array
+     */
+    private $_subNodesContainer = [];
 
     /**
      * TransactionController constructor.
@@ -64,5 +112,146 @@ class UserController extends Controller
         }
 
         return view(self::INDEX_PAGE, compact('users'));
+    }
+
+    /**
+     * @param $username
+     *
+     * @return Application|Factory|View
+     */
+    public function map($username)
+    {
+        $user = $this->_userService->findByClause(['username' => $username])->first();
+        $nodes = $this->getSigmaDataNodes($user);
+        return view(self::MAP_PAGE, compact('nodes', 'username'));
+    }
+
+    /**
+     * Create Node
+     *
+     * @param $id
+     * @param $name
+     * @param null $data
+     *
+     * @return array
+     */
+    private function _node($id, $name, $data = null): array
+    {
+        return [
+            'id'      => $id,
+            'label'    => $name,
+            'size'    => IMMPConfig::NODE['size'],
+            'type'    => IMMPConfig::NODE['type'],
+            'user_id' => $data,
+        ];
+    }
+
+    /**
+     * Create Edge
+     *
+     * @param $id
+     * @param $source
+     * @param $target
+     *
+     * @return array
+     */
+    private function _edge($id, $source, $target): array
+    {
+        return [
+            'id'     => $id,
+            'source' => $source,
+            'target' => $target,
+            'size'   => IMMPConfig::EDGE['size']
+        ];
+    }
+
+    /**
+     * Fetch Sub Users
+     *
+     * @param $user
+     *
+     * @return string|array|null
+     */
+    private function _hasMoreNodes($user)
+    {
+        $user = $this->_userService->findById($user['id']);
+        return $user->childrens->toArray();
+    }
+
+    /**
+     * Create Sigma Data Nodes <Initializer>
+     *
+     * @return false|string
+     */
+    public function getSigmaDataNodes($user)
+    {
+        $data = $user->childrens;
+
+        $this->_compileNetwork($data->toArray());
+
+        return json_encode($this->_sigmaDataCollection);
+    }
+
+    /**
+     * Node Id Generator
+     *
+     * @return string
+     */
+    private function _nodeId(): string
+    {
+        $newId = sprintf("%s_%s_%s", IMMPConfig::MMP_ID, IMMPConfig::NODE['prefix'], $this->_node);
+        $this->_node ++;
+        return $newId;
+    }
+
+    /**
+     * Edge Id Generator
+     *
+     * @return string
+     */
+    private function _edgeId(): string
+    {
+        $newId = sprintf("%s_%s_%s", IMMPConfig::MMP_ID, IMMPConfig::EDGE['prefix'], $this->_edge);
+        $this->_edge ++;
+        return $newId;
+    }
+
+    /**
+     * Compile Sigma Network
+     *
+     * @param $users
+     * @param false $recursive
+     */
+    private function _compileNetwork($users, $recursive = false)
+    {
+        foreach ($users as $key => $user)
+        {
+            $nodeId = $this->_nodeId();
+            array_push($this->_nodesCollection, $this->_node($nodeId, $user["username"], $user["id"]));
+
+            if ($users = $this->_hasMoreNodes($user))
+                array_push($this->_subNodesContainer, [$nodeId => $users]);
+        }
+
+        $this->_sigmaDataCollection = array_merge(
+            [
+                'nodes' => $this->_nodesCollection
+            ],
+            [
+                'edges' => $this->_edgesCollection
+            ]
+        );
+    }
+
+    /**
+     * @param Request $request
+     * @param $id
+     *
+     * @return JsonResponse
+     */
+    public function fetchDetails(Request $request, $id)
+    {
+        $data = $this->_userService->findById($id);
+        return response()->json($data);
     }
 }

@@ -55,6 +55,15 @@ interface IUserServiceContract
      */
     public function getChildrensCount($parentId);
 
+    /**
+     * @param $array
+     *
+     * @return mixed
+     */
+    public function findByClause($array);
+
+
+
 
 
 }

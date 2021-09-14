@@ -35,4 +35,77 @@
 {{----}}
 {{--    <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>--}}
 {{--    <script src="{{asset('bootstrap/js/bootstrap.js/bootstrap.min.js')}}"></script>--}}
+    <style>
+        html, body, #maps, .mmp {
+            height: 100%;
+        }
+
+        .mmp {
+            position: inherit !important;
+        }
+
+        #maps .mmp {
+            position: relative !important;
+            width: 100%;
+            height: 61vh;
+        }
+    </style>
+    <style>
+        #container {
+            max-width: 400px;
+            height: 400px;
+            margin: auto;
+        }
+    </style>
+    <style>
+        .btn_wohover {
+            background-color: #7665bf;
+            border-color: #ffffff;
+            color: #ffffff !important;
+            padding-right: 1.5rem !important;
+            padding-left: 1.5rem !important;
+            font-weight: 700;
+        }
+
+        .btn_forgot:hover {
+            background-color: #d6d5df2a;
+        }
+
+        .btn_hover:hover {
+            background-color: #ffffff;
+            border-color: #7665bf;
+            color: #7665bf !important;
+        }
+
+        input:hover {
+            box-shadow: 1px 2px 10px 1px #ffffff;
+        }
+
+        .heading_style {
+            font-weight: bold
+        }
+
+        .footer_links {
+            color: #7665bf;
+            font-weight: bold
+        }
+
+        .footer_links:hover {
+            color: #000000
+        }
+
+        @media(max-width:767px)
+        {
+            .screen_set{
+                border-radius: 5% 5% 5% 5% !important;
+            }
+        }
+        @media(min-width:767px)
+        {
+            .screen_set{
+                border-radius: 0% 5% 5% 0% !important;
+
+            }
+        }
+    </style>
 </head>

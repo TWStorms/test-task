@@ -2,7 +2,7 @@
 @section('title', 'Users')
 @section('content')
     <div class="container-fluid" style="{{Auth::user()->status != \App\Helpers\IUserStatus::ACTIVE ? 'filter: blur(20px)' : ''}};">
-        <div class="row" style="height: 100vh;">
+        <div class="row" style="height: 70vh;">
             <div class="col-md-2 bg-purple px-0 d-md-block d-none " style="">
                 @if(Auth::user()->status == \App\Helpers\IUserStatus::ACTIVE)
                     @include('user.navbar')
@@ -13,6 +13,7 @@
                     <h2 class="text-center" style="font-family: 'Nunito', sans-serif; color: white; background-color: mediumpurple;"><strong>{!! __('Children') !!}</strong></h2>
                 </div>
                 <div>
+                    <button class="btn btn-rounded float-right" onclick="copyToClipboard($(this))" data-link="{{route('invitation.username.sign-up', [auth()->user()->username])}}" style="margin-top: 15px; color:white;background-color: mediumpurple;">Copy Invitation Link</button>
                     <p>
                         <a class="btn ml-3 mt-3" style="color:white;background-color: mediumpurple;" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
                             Filter
@@ -38,6 +39,49 @@
 
     </div>
     {{--</div>--}}
+
+    <script>
+        /**
+         * Show toaster for success or error messages
+         *
+         * @param type Type of toaster success or error.
+         * @param msg  Message to be displayed in toaster.
+         */
+        const showToaster = (type, msg) => {
+
+            if(msg === undefined)
+                return;
+
+            if (msg.length > 0) {
+                switch (type) {
+                    case 'success':
+                        toastr.success(
+                            msg,
+                            {timeOut: "30000"}
+                        );
+                        break;
+                    case 'error':
+                        toastr.error(
+                            msg,
+                            {timeOut: "30000"}
+                        );
+                        break;
+                }
+            }
+        };
+
+        function copyToClipboard(elem) {
+            /* Get the text field */
+            var copyText = elem.attr('data-link');
+            var $temp = $("<input>");
+            $("body").append($temp);
+            $temp.val(copyText).select();
+            document.execCommand("copy");
+
+            /* Alert the copied text */
+            showToaster('success', "Link Copied");
+        }
+    </script>
 @endsection
 
 @section('page-js')

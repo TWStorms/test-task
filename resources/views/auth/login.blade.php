@@ -1,13 +1,13 @@
 @extends('layouts.app')
 @section('title', 'Login')
 @section('content')
-    <div class="auth-layout-wrap auth-layout-register backgroundimageset" style="background-image: url({{asset('assets/images/yacht1.jpg')}});">
+    <div class="auth-layout-wrap auth-layout-register">
         <div class="auth-content signup-card">
             <div class="container py-5 px-5 px-md-0" >
                 <div class="row">
                     <div class="col-md-4 d-sm-none d-none d-md-block d-lg-block banner-sec  " style="border-radius: 5% 0% 0% 5%; background-color: #F9FBF2;">
                         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                            <div class="carousel-item active" style="background-color: #F9FBF2;">
+                            <div class="carousel-item active bg-light">
                                 <img class=" img-fluid d-flex justify-content-center align-content-center  " src="{{asset('assets/images/login_image.png')}}" alt="First slide" style="padding-top: 4.5rem; padding-bottom: 2.5rem; "  />
                             </div>
                         </div>

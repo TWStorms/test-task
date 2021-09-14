@@ -4,8 +4,7 @@
         <li class="nav-item"><a href="#" class="nav-link px-2 footer_links">About Us</a></li>
         <li class="nav-item"><a href="#" class="nav-link px-2 footer_links">Term and Condition</a></li>
         <li class="nav-item"><a href="#" class="nav-link px-2 footer_links">Privacy Policy</a></li>
-        <li class="nav-item"><a href="#" class="nav-link px-2 footer_links">&copy All Right Reserved</a></li>
-        <li class="nav-item"><a href="#" class="nav-link px-2 footer_links">FAQs</a></li>
+        <li class="nav-item"><a href="#" class="nav-link px-2 footer_links">Copyright &copy; 2021 all rights reserved</a></li>
     </ul>
 </footer>
 {{--Load Scripts--}}

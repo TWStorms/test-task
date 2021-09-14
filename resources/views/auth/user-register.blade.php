@@ -7,7 +7,7 @@
                 <div class="row">
                     <div class="col-md-4 d-sm-none d-none d-md-block d-lg-block banner-sec " style=" background-color: #F9FBF2; border-radius: 5% 0% 0% 5%; box-shadow: 1px 3px 5px rgb(0 0 0 / 20%) ;">
                         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                            <div class="carousel-item active" style="margin-top: 10px; background-color: #F9FBF2;">
+                            <div class="carousel-item active bg-light" >
                                 <img class=" img-fluid d-flex justify-content-center align-content-center" src="{{asset('assets/images/login_image.png')}}" alt="First slide" style="padding-top: 4.5rem; padding-bottom: 2.5rem; "  />
                             </div>
                         </div>
@@ -45,7 +45,7 @@
                             </div>
                             <div class="form-group ">
                                 <div class="row">
-                                    <div class="col py-2"><input type="text" class="form-control" name="referer_username" placeholder="Reference Username" required="required"></div>
+                                    <div class="col py-2"><input type="text" class="form-control" name="referer_username" placeholder="Reference Username" required="required" value="{{$username ?? ''}}"></div>
                                 </div>
                             </div>
                             <div class="form-group text-white">

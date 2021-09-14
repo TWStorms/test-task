@@ -65,10 +65,6 @@
                     <!-- /.row -->
 
                 </main>
-                <div class=" px-0 col-12 footer-div d-flex justify-content-center align-items-center">
-                    <footer class="">
-                        <p class="mb-0">Copyright &copy; 2021 all rights reserved</p></footer>
-                </div>
             </div>
 
         </div>

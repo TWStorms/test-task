@@ -17,7 +17,8 @@
         "laravel/ui": "^2.4",
         "laravelcollective/html": "^6.2",
         "mohammad-fouladgar/eloquent-builder": "^3.1",
-        "spatie/laravel-permission": "^4.3"
+        "spatie/laravel-permission": "^4.3",
+      "ext-json": "*"
     },
     "require-dev": {
         "facade/ignition": "^2.0",

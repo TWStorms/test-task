@@ -1,16 +1,13 @@
 <div id="app">
-    <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-        <div class="col-md-2 text-center">
+    <nav class="navbar navbar-expand-md navbar-light fixed-top bg-light">
+        <div class="container-fluid" style="padding-left: 50px;">
             <a class="navbar-brand" href="{{ url('/') }}">
-                <div class="logo justify-content-center align-items-center">
-                    <img src="{{asset('assets/images/MLM-Logo-2.png')}}" style="width: 100px;" alt="">
-                </div>
+                <img src="{{asset('assets/images/logo1.png')}}" alt="" style="width: 20% !important;">
             </a>
-        </div>
-        <div class="col-md-10">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                 <span class="navbar-toggler-icon"></span>
             </button>
+
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav mr-auto">
@@ -22,11 +19,11 @@
                     <!-- Authentication Links -->
                     @guest
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                            <a class="nav-link btn btn-outline-success rounded-pill form-control me-2  btn_wohover btn_hover" href="{{ route('login') }}">{{ __('Login') }}</a>
                         </li>
                         @if (Route::has('register'))
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ url('register-user') }}">{{ __('Register') }}</a>
+                                <a class="nav-link btn btn-outline-success rounded-pill form-control me-2  btn_wohover btn_hover" href="{{ url('register-user') }}">{{ __('Register') }}</a>
                             </li>
                         @endif
                     @else
@@ -38,6 +35,7 @@
                                         <div class="dropdown-header">
                                             <i class="i-Lock-User mr-1"></i> {!! __(Auth::user()->username) !!}
                                         </div>
+                                        <a class="dropdown-item" href="{{ route(\App\Helpers\GeneralHelper::GET_ROLE(auth()->user()).'.dashboard') }}">{!! __('Dashboard') !!}</a>
                                         <a class="dropdown-item" href="{{ route('logout') }}">{!! __('Logout') !!}</a>
                                     </div>
                                 </div>
@@ -49,3 +47,4 @@
         </div>
     </nav>
 </div>
+<br><br><br><br>

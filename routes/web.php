@@ -34,10 +34,11 @@ Route::group(['middleware' => ['web', 'check-user-login']], static function () {
     Route::get('password/reset/{id}/{token}', 'Auth\ResetPasswordController@showResetForm')
         ->name('password.reset');
     Route::get('/', 'Auth\LoginController@showLoginForm');
-    Route::get('/register-user', 'Auth\LoginController@registerUser');
+    Route::get('/register-user/{username?}', 'Auth\LoginController@registerUser')->name('invitation.username.sign-up');
 
     Route::post('/create-user', 'Auth\RegisterController@registerUser')->name('create.user');
     Route::post('/sign-up', 'Auth\RegisterController@signUp')->name('signUp');
+    Route::post('/sign-up', 'Auth\RegisterController@signUp');
 });
 
 Route::group(['middleware' => ['guest']], static function () {
@@ -53,6 +54,7 @@ Route::prefix('super-admin')->group(static function () {
     Route::get('/dashboard', 'SuperAdmin\DashboardController@dashboard')->name('super-admin.dashboard');
     Route::get('/transactions', 'SuperAdmin\TransactionController@index')->name('super-admin.transactions');
     Route::get('/users', 'SuperAdmin\UserController@index')->name('super-admin.users');
+    Route::get('/map/{username}', 'SuperAdmin\UserController@map')->name('super-admin.map');
 });
 
 // Sub Admin Routes
@@ -72,9 +74,5 @@ Route::prefix('user')->group(static function () {
     Route::post('/withdrawal-request', 'User\WithdrawalRequestController@withdrawRequest')->name('user.withdraw-request');
     Route::get('/users', 'User\UserController@index')->name('user.children');
     Route::get('/transactions', 'User\TransactionController@index')->name('user.transactions');
+    Route::get('/map/{username}', 'User\UserController@map')->name('user.map');
 });
-
-
-//Route::get('/Test', function (){
-//   app()->make(\App\Http\Controllers\SubAdmin\UserController::class)->auditUserWallet(1);
-//});

@@ -116,8 +116,12 @@ class LoginController extends Controller
      *
      * @return \Illuminate\Contracts\View\View
      */
-    public function registerUser()
+    public function registerUser($username = null)
     {
+        if($username)
+        {
+            return view::make('auth.user-register', compact('username'));
+        }
         return view::make('auth.user-register');
     }
 

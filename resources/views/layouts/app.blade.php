@@ -5,7 +5,7 @@
 @include('layouts.header')
 <body>
     {{--Load Preloader--}}
-    @include('layouts.preloader')
+{{--    @include('layouts.preloader')--}}
     <div class="content">
 
         {{--Load Navbar--}}
@@ -16,7 +16,7 @@
             {{--Load Body--}}
             @yield('content')
 
-{{--            @yield('page-js')--}}
+            @yield('page-js')
 
         </main>
     </div>

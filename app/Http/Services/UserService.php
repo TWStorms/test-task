@@ -97,4 +97,14 @@ class UserService implements IUserServiceContract
     {
         return $this->_userRepo->findByClause(['parent_id' => $parentId])->count();
     }
+
+    /**
+     * @param $array
+     *
+     * @return mixed|void
+     */
+    public function findByClause($array)
+    {
+        return $this->_userRepo->findByClause($array);
+    }
 }

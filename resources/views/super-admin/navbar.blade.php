@@ -18,7 +18,7 @@
             </a>
         </li>
         <li class="p-3 side-item">
-            <a class="text-white d-flex " href="#">
+            <a class="text-white d-flex " href="{{route('super-admin.map',[auth()->user()->username])}}">
                 <div>
                     <i class="fas fa-network-wired"></i>
                 </div>

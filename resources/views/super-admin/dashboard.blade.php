@@ -41,7 +41,7 @@
                                     <div class="inner pl-3">
                                         <h5>Wallet</h5>
 
-                                        <p class="m-0 mt-2">Rs {!! __(auth()->user()->wallet->amount) !!}</p>
+                                        <p class="m-0 mt-2">Rs {!! __(auth()->user()->wallet ? auth()->user()->wallet->amount : 0) !!}</p>
                                         <p class="m-0 mt-2">Level {!! __(auth()->user()->level_completed) !!}</p>
 
                                     </div>
@@ -73,28 +73,23 @@
                         <!-- ./col -->
                         <div class="col-lg-3 col-md-6 col-12">
                             <!-- small box -->
-                            <div class="small-box text-left d-flex justify-content-between" id="box-4">
+                            <a href="{{route('super-admin.map', [auth()->user()->username])}}" style="text-decoration: none;">
+                                <div class="small-box text-left d-flex justify-content-between" id="box-4">
                                 @if(Auth::user()->status == \App\Helpers\IUserStatus::ACTIVE)
                                     <div class="inner text-white pl-3">
                                         <h5>My Network</h5>
-
-                                        <p class="m-0 my-1">0</p>
                                     </div>
                                     <div class="icon">
                                         <i class="fas fa-network-wired" style="font-size: 70px; margin:10px 20px 0 0px; color: white; opacity: 20%;"></i>
                                     </div>
                                 @endif
                             </div>
+                            </a>
                         </div>
                         <!-- ./col -->
                     </div>
                     <!-- /.row -->
-
                 </main>
-                <div class=" px-0 col-12 footer-div d-flex justify-content-center align-items-center">
-                    <footer class="">
-                        <p class="mb-0">Copyright &copy; 2021 all rights reserved</p> </footer>
-                </div>
             </div>
 
         </div>
