@@ -9,7 +9,7 @@
     </div>
     @endif
     <div class="container-fluid" style="{{Auth::user()->status != \App\Helpers\IUserStatus::ACTIVE ? 'filter: blur(20px)' : ''}};">
-        <div class="row" style="height: 70vh;">
+        <div class="row" style="height: 100vh;">
             <div class="col-md-2 bg-purple px-0 d-md-block d-none " style="">
                 @if(Auth::user()->status == \App\Helpers\IUserStatus::ACTIVE)
                     @include('user.navbar')

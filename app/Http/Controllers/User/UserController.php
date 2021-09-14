@@ -167,19 +167,6 @@ class UserController extends Controller
     }
 
     /**
-     * Fetch Sub Users
-     *
-     * @param $user
-     *
-     * @return string|array|null
-     */
-    private function _hasMoreNodes($user)
-    {
-        $user = $this->_userService->findById($user['id']);
-        return $user->childrens->toArray();
-    }
-
-    /**
      * Create Sigma Data Nodes <Initializer>
      *
      * @return false|string
@@ -242,17 +229,5 @@ class UserController extends Controller
                 'edges' => $this->_edgesCollection
             ]
         );
-    }
-
-    /**
-     * @param Request $request
-     * @param $id
-     *
-     * @return JsonResponse
-     */
-    public function fetchDetails(Request $request, $id)
-    {
-        $data = $this->_userService->findById($id);
-        return response()->json($data);
     }
 }

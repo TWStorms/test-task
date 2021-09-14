@@ -52,6 +52,7 @@ Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
 // Super Admin Routes
 Route::prefix('super-admin')->group(static function () {
     Route::get('/dashboard', 'SuperAdmin\DashboardController@dashboard')->name('super-admin.dashboard');
+    Route::get('/profile', 'ProfileController@profile')->name('super-admin.profile');
     Route::get('/transactions', 'SuperAdmin\TransactionController@index')->name('super-admin.transactions');
     Route::get('/users', 'SuperAdmin\UserController@index')->name('super-admin.users');
     Route::get('/map/{username}', 'SuperAdmin\UserController@map')->name('super-admin.map');
@@ -60,6 +61,7 @@ Route::prefix('super-admin')->group(static function () {
 // Sub Admin Routes
 Route::prefix('sub-admin')->group(static function () {
     Route::get('/dashboard', 'SubAdmin\DashboardController@dashboard')->name('sub-admin.dashboard');
+    Route::get('/profile', 'ProfileController@profile')->name('sub-admin.profile');
     Route::get('/awaiting-approval', 'SubAdmin\UserController@awaitingApproval')->name('sub-admin.awaiting-approval');
     Route::post('/user/activate', 'SubAdmin\UserController@activateUser')->name('sub-admin.user-activate');
     Route::get('/withdrawal-requests', 'SubAdmin\WithdrawalRequestController@index')->name('sub-admin.withdrawal-requests');
@@ -70,6 +72,7 @@ Route::prefix('sub-admin')->group(static function () {
 // User Routes
 Route::prefix('user')->group(static function () {
     Route::get('/dashboard', 'User\DashboardController@dashboard')->name('user.dashboard');
+    Route::get('/profile', 'ProfileController@profile')->name('user.profile');
     Route::get('/withdrawal-requests', 'User\WithdrawalRequestController@index')->name('user.withdrawal-requests');
     Route::post('/withdrawal-request', 'User\WithdrawalRequestController@withdrawRequest')->name('user.withdraw-request');
     Route::get('/users', 'User\UserController@index')->name('user.children');

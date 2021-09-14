@@ -10,6 +10,15 @@
         </li>
 
         <li class="p-3 side-item ">
+            <a class="text-white d-flex " href="{{route('sub-admin.profile')}}">
+                <div>
+                    <i class="fas fa-user-alt"></i>
+                </div>
+                <div class="ml-2 res-text">My Profile</div>
+            </a>
+        </li>
+
+        <li class="p-3 side-item ">
             <a class="text-white d-flex " href="{{route('sub-admin.awaiting-approval')}}">
                 <div>
                     <i class="fas fa-user-alt"></i>

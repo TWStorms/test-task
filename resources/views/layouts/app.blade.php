@@ -6,6 +6,7 @@
 <body>
     {{--Load Preloader--}}
 {{--    @include('layouts.preloader')--}}
+    <br><br><br>
     <div class="content">
 
         {{--Load Navbar--}}

@@ -10,7 +10,7 @@
         </li>
 
         <li class="p-3 side-item ">
-            <a class="text-white d-flex " href="">
+            <a class="text-white d-flex " href="{{route('super-admin.profile')}}">
                 <div>
                     <i class="fas fa-user-alt"></i>
                 </div>
