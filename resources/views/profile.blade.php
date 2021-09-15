@@ -60,13 +60,13 @@
                         <div class="col-md-4 col-6">
                             <div class="mb-4" style="color: mediumpurple;">
                                 <p class="mb-1"><i class="fa fa-layer-group mr-1"></i>Level Completed</p>
-                                <span>{{!empty($user->level_completed)? ucwords($user->level_completed) : ''}}</span>
+                                <span>{{!empty($user->level_completed)? ucwords($user->level_completed) : '0'}}</span>
                             </div>
                         </div>
                         <div class="col-md-4 col-6">
                             <div class="mb-4" style="color: mediumpurple;">
                                 <p class=" mb-1"><i class="fa fa-child mr-1"></i>Child Count</p>
-                                <span>{{!empty($user->child_count)? ucwords($user->child_count) : ''}}</span>
+                                <span>{{!empty($user->child_count)? ucwords($user->child_count) : '0'}}</span>
                             </div>
                         </div>
                         <div class="col-md-4 col-6">
