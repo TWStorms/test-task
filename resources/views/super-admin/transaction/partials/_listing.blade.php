@@ -5,6 +5,7 @@
         <td><strong>{!! __('Method') !!}</strong></td>
         <td><strong>{!! __('Amount') !!}</strong></td>
         <td><strong>{!! __('Type') !!}</strong></td>
+        <td><strong>{!! __('Date') !!}</strong></td>
     </tr>
     </thead>
     <tbody>
@@ -21,6 +22,7 @@
                 </td>
                 <td>{!! __($transaction->amount) !!}</td>
                 <td>{!! __($transaction->transaction_type === \App\Helpers\ITransactionMethodTypes::CREDIT ? '<span class="badge badge-success">credit</span>' : '<span class="badge badge-primary">debit</span>' ) !!}</td>
+                <td>{!! __(\Carbon\Carbon::parse($transaction->created_at)->format('d-m-Y H:i')) !!}</td>
             </tr>
         @endforeach
     @else

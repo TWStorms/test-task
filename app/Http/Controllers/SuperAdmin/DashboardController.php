@@ -63,7 +63,7 @@ class DashboardController extends Controller
     public function dashboard()
     {
         $transactionCount = $this->_transactionService->getTransactionForSpecificUserCount(['user_id' => Auth::id(), 'withdrawal_request_status' => null]);
-        $userCount = $this->_userService->getChildrensCount(Auth::id());
+        $userCount = $this->_userService->getAllCount();
         return view(self::DASHBOARD_PAGE, compact('transactionCount', 'userCount'));
     }
 }

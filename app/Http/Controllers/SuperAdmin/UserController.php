@@ -92,8 +92,8 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
-        if($request->ajax() && count($request->all()) > 0)
-            $request->request->add(['parent_id' => Auth::id()]);
+//        if($request->ajax() && count($request->all()) > 0)
+//            $request->request->add(['parent_id' => Auth::id()]);
 
         $users = ($request->ajax() && count($request->all()) > 0) ?
             app(\App\Http\Services\SearchService::class)->search(
@@ -101,7 +101,7 @@ class UserController extends Controller
                 \App\Http\Filters\UserFilter::class
             )
             :
-            $this->_userService->getChildrens(Auth::id())->appends(request()->all());
+            $this->_userService->getAllUser()->appends(request()->all());
 
         if ($request->ajax())
         {

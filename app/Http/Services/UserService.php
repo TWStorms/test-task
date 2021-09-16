@@ -79,6 +79,14 @@ class UserService implements IUserServiceContract
     }
 
     /**
+     * @return mixed|void
+     */
+    public function getAllUser()
+    {
+        return $this->_userRepo->paginate(GeneralHelper::PAGINATION_SIZE());
+    }
+
+    /**
      * @param $parentId
      *
      * @return mixed|void
@@ -86,6 +94,14 @@ class UserService implements IUserServiceContract
     public function getChildrens($parentId)
     {
         return $this->_userRepo->findByClause(['parent_id' => $parentId])->paginate(GeneralHelper::PAGINATION_SIZE());
+    }
+
+    /**
+     * @return mixed|void
+     */
+    public function getAllCount()
+    {
+        return $this->_userRepo->count();
     }
 
     /**

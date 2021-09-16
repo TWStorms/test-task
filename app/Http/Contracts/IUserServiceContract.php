@@ -49,6 +49,16 @@ interface IUserServiceContract
     public function getChildrens($parentId);
 
     /**
+     * @return mixed
+     */
+    public function getAllUser();
+
+    /**
+     * @return mixed
+     */
+    public function getAllCount();
+
+    /**
      * @param $parentId
      *
      * @return mixed

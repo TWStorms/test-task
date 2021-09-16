@@ -16,7 +16,7 @@
             <div class="col-md-4 mt-3">
                 {!! Form::select('status',['2' => 'Active', '1' => 'In-Active'], null, ['id' => 'status', 'class' => 'form-control', 'placeholder' => __('Active Status')]) !!}
             </div>
-            {!! Form::hidden('parent_id', auth()->id(), []) !!}
+{{--            {!! Form::hidden('parent_id', auth()->id(), []) !!}--}}
 
             <div class="col-md-4 mt-3">
                 <div class="row">
