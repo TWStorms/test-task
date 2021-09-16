@@ -217,8 +217,8 @@ class UserController extends Controller
             $nodeId = $this->_nodeId();
             array_push($this->_nodesCollection, $this->_node($nodeId, $user["username"], $user["id"]));
 
-            if ($users = $this->_hasMoreNodes($user))
-                array_push($this->_subNodesContainer, [$nodeId => $users]);
+//            if ($users = $this->_hasMoreNodes($user))
+//                array_push($this->_subNodesContainer, [$nodeId => $users]);
         }
 
         $this->_sigmaDataCollection = array_merge(

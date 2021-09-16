@@ -164,19 +164,19 @@ class UserController extends Controller
             'size'   => IMMPConfig::EDGE['size']
         ];
     }
-
-    /**
-     * Fetch Sub Users
-     *
-     * @param $user
-     *
-     * @return string|array|null
-     */
-    private function _hasMoreNodes($user)
-    {
-        $user = $this->_userService->findById($user['id']);
-        return $user->childrens->toArray();
-    }
+//
+//    /**
+//     * Fetch Sub Users
+//     *
+//     * @param $user
+//     *
+//     * @return string|array|null
+//     */
+//    private function _hasMoreNodes($user)
+//    {
+//        $user = $this->_userService->findById($user['id']);
+//        return $user->childrens->toArray();
+//    }
 
     /**
      * Create Sigma Data Nodes <Initializer>
@@ -229,8 +229,8 @@ class UserController extends Controller
             $nodeId = $this->_nodeId();
             array_push($this->_nodesCollection, $this->_node($nodeId, $user["username"], $user["id"]));
 
-            if ($users = $this->_hasMoreNodes($user))
-                array_push($this->_subNodesContainer, [$nodeId => $users]);
+//            if ($users = $this->_hasMoreNodes($user))
+//                array_push($this->_subNodesContainer, [$nodeId => $users]);
         }
 
         $this->_sigmaDataCollection = array_merge(
@@ -241,17 +241,5 @@ class UserController extends Controller
                 'edges' => $this->_edgesCollection
             ]
         );
-    }
-
-    /**
-     * @param Request $request
-     * @param $id
-     *
-     * @return JsonResponse
-     */
-    public function fetchDetails(Request $request, $id)
-    {
-        $data = $this->_userService->findById($id);
-        return response()->json($data);
     }
 }
