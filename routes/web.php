@@ -40,6 +40,8 @@ Route::group(['middleware' => ['web', 'check-user-login']], static function () {
     Route::post('/sign-up', 'Auth\RegisterController@signUp')->name('signUp');
     Route::post('/sign-up', 'Auth\RegisterController@signUp');
 });
+    Route::post('/change/password', 'User\UserController@changePassword')->name('user.change-password');
+
 
 Route::group(['middleware' => ['guest']], static function () {
 
@@ -48,6 +50,11 @@ Route::group(['middleware' => ['guest']], static function () {
 });
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
+Route::get('/contact-us', 'ContactUsController@page')->name('contact-us');
+Route::post('/contact-us/send', 'ContactUsController@send')->name('contact-us.send');
+Route::get('/about-us', 'AboutUsController@page')->name('about-us');
+Route::get('/term-condition', 'TermConditionController@page')->name('term-condition');
+Route::get('/policy', 'PolicyController@page')->name('policy');
 
 // Super Admin Routes
 Route::prefix('super-admin')->group(static function () {

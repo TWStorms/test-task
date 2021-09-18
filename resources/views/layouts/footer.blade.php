@@ -1,9 +1,10 @@
 <hr>
-<footer class=" my-3">
+<footer class="my-3">
     <ul class="nav justify-content-around pb-2 ">
-        <li class="nav-item"><a href="#" class="nav-link px-2 footer_links">About Us</a></li>
-        <li class="nav-item"><a href="#" class="nav-link px-2 footer_links">Term and Condition</a></li>
-        <li class="nav-item"><a href="#" class="nav-link px-2 footer_links">Privacy Policy</a></li>
+        <li class="nav-item"><a href="{{route('about-us')}}" class="nav-link px-2 footer_links">About Us</a></li>
+        <li class="nav-item"><a href="{{route('term-condition')}}" class="nav-link px-2 footer_links">Term and Condition</a></li>
+        <li class="nav-item"><a href="{{route('policy')}}" class="nav-link px-2 footer_links">Privacy Policy</a></li>
+        <li class="nav-item"><a href="{{route('contact-us')}}" class="nav-link px-2 footer_links">Contact Us</a></li>
         <li class="nav-item"><a href="#" class="nav-link px-2 footer_links">Copyright &copy; 2021 all rights reserved</a></li>
     </ul>
 </footer>
@@ -23,7 +24,18 @@
 <script src="{{ asset('js/sweetalert2.min.js') }}"></script>
 <script src="{{ asset('js/global.js') }}"></script>
 <script src="{{ asset('js/index.js') }}"></script>
+<script>
+    $(window).on('beforeunload', function(){
 
+        $('.preloader').show();
+
+    });
+
+    $(function () {
+
+        $('.preloader').hide();
+    })
+</script>
 @if(session('message') && session('alert_type'))
     {!! \App\Helpers\GeneralHelper::TOAST(session('alert_type'), session('message')) !!}
 @endif

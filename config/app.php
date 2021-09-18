@@ -27,6 +27,8 @@ return [
     */
 
     'number' => env('NUMBER'),
+    'to_name' => env('TO_NAME'),
+    'to_email' => env('TO_EMAIL'),
 
     'env' => env('APP_ENV', 'production'),
 

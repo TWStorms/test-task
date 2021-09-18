@@ -527,8 +527,8 @@ abstract class GeneralHelper
     {
         Mail::send($view, $data, function($message) use ($to_name, $to_email) {
             $message->to($to_email, $to_name)
-                ->subject('Email Verification');
-            $message->from('wbinkhalid786@gmail.com','Email Verification');
+                ->subject('Contact Us Email');
+            $message->from('wbinkhalid786@gmail.com','Contact Us Email');
         });
     }
 

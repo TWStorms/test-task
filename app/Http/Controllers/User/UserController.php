@@ -11,6 +11,7 @@ use App\Helpers\GeneralHelper;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Contracts\IUserServiceContract;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\View\View;
 
 /**
@@ -229,5 +230,27 @@ class UserController extends Controller
                 'edges' => $this->_edgesCollection
             ]
         );
+    }
+
+    /**
+     * @param Request $request
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function changePassword(Request $request)
+    {
+        $user = $this->_userService->findById($request->user_id);
+        if($request->new_password == $request->confirm_password)
+        {
+            if(Hash::check($request->old_password, $user->password))
+            {
+                $this->_userService->update($request->user_id, ['password' => Hash::make($request->new_password)]);
+                return redirect()->back()->with(['message' => "Successfully change password", 'alert_type' => 'success']);
+            }else{
+                return redirect()->back()->with(['message' => "Invalid old password", 'alert_type' => 'error']);
+            }
+        }else{
+            return redirect()->back()->with(['message' => "Confirm password did not match", 'alert_type' => 'error']);
+        }
     }
 }

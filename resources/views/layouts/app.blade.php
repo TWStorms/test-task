@@ -5,7 +5,7 @@
 @include('layouts.header')
 <body>
     {{--Load Preloader--}}
-{{--    @include('layouts.preloader')--}}
+    @include('layouts.preloader')
     <br><br><br>
     <div class="content">
 

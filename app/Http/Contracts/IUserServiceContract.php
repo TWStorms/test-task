@@ -72,6 +72,11 @@ interface IUserServiceContract
      */
     public function findByClause($array);
 
+    /**
+     * @return mixed
+     */
+    public function update($id, $array);
+
 
 
 

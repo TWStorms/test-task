@@ -19,11 +19,11 @@
                     <!-- Authentication Links -->
                     @guest
                         <li class="nav-item">
-                            <a class="nav-link btn btn-outline-success rounded-pill form-control me-2  btn_wohover btn_hover" href="{{ route('login') }}">{{ __('Login') }}</a>
+                            <a class="nav-link btn btn-outline-success rounded-pill me-2  btn_wohover btn_hover" href="{{ route('login') }}">{{ __('Login') }}</a>
                         </li>
                         @if (Route::has('register'))
                             <li class="nav-item">
-                                <a class="nav-link btn btn-outline-success rounded-pill form-control me-2  btn_wohover btn_hover" href="{{ url('register-user') }}">{{ __('Register') }}</a>
+                                <a class="nav-link btn btn-outline-success rounded-pill me-2  btn_wohover btn_hover" href="{{ url('register-user') }}">{{ __('Register') }}</a>
                             </li>
                         @endif
                     @else

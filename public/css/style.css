@@ -205,9 +205,9 @@ header {
     background-color: #24666e;
 }
 .btn_wohover {
-    background-color: #7665bf;
-    border-color: #ffffff;
-    color: #ffffff;
+    background-color: #7665bf !important;
+    border-color: #ffffff !important;
+    color: #ffffff !important;
 }
 
 .btn_forgot:hover {
@@ -215,9 +215,9 @@ header {
 }
 
 .btn_hover:hover {
-    background-color: #ffffff;
-    border-color: #7665bf;
-    color: #7665bf;
+    background-color: #ffffff !important;
+    border-color: #7665bf !important;
+    color: #7665bf !important;
 }
 
 input:hover {

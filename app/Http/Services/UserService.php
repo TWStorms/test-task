@@ -123,4 +123,15 @@ class UserService implements IUserServiceContract
     {
         return $this->_userRepo->findByClause($array);
     }
+
+    /**
+     * @param $id
+     * @param $array
+     *
+     * @return bool
+     */
+    public function update($id, $array)
+    {
+        return $this->_userRepo->update($id, $array);
+    }
 }

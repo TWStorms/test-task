@@ -86,12 +86,30 @@
                                     @endif</span>
                             </div>
                         </div>
+                        @if(\App\Helpers\GeneralHelper::IS_USER())
+                            <div class="col-md-4 col-6">
+                                <div class="mb-4" style="color: mediumpurple;">
+                                    <p class=" mb-1"><i class="fa fa-lock mr-1"></i>Change Password</p>
+                                    <div onclick="changePassword({{$user->id}})"><i class="fa fa-edit mr-1" style="cursor: pointer;"></i></div>
+                                </div>
+                            </div>
+                        @endif
                     </div>
                 </main>
             </div>
         </div>
     </div>
+    @if(\App\Helpers\GeneralHelper::IS_USER())
+        @include('change-password-modal')
+    @endif
     {{--</div>--}}
+    <script>
+        function changePassword(id)
+        {
+            $('#user_id').val(id);
+            $('#changePassword').modal('toggle');
+        }
+    </script>
 @endsection
 
 @section('page-js')

@@ -59,12 +59,12 @@
     </style>
     <style>
         .btn_wohover {
-            background-color: #7665bf;
-            border-color: #ffffff;
+            background-color: #7665bf !important;
+            border-color: #ffffff !important;
             color: #ffffff !important;
             padding-right: 1.5rem !important;
             padding-left: 1.5rem !important;
-            font-weight: 700;
+            font-weight: 700 !important;
         }
 
         .btn_forgot:hover {
@@ -72,8 +72,8 @@
         }
 
         .btn_hover:hover {
-            background-color: #ffffff;
-            border-color: #7665bf;
+            background-color: #ffffff !important;
+            border-color: #7665bf !important;
             color: #7665bf !important;
         }
 
@@ -106,6 +106,22 @@
                 border-radius: 0% 5% 5% 0% !important;
 
             }
+        }
+        .loader{
+            background: transparent;
+            position: absolute;
+            margin-top: 5%;
+            margin-left: 35%;
+            /*top: 20px;*/
+            /*left: 20px;*/
+            height: 30%;
+            width: 30%;
+            /*z-index: 9999999;*/
+            /*background: white;*/
+            /*align-content: center;*/
+            /*width:100%;*/
+            /*height:100%;*/
+            z-index:99999999;
         }
     </style>
 </head>
