@@ -24,7 +24,7 @@
         let id = JSON.parse(array[array.length - 1]);
         let name = e.name;
         if (id !== 0) {
-            window.location.href = `/super-admin/map/${name}`;
+            window.location.href = `/user/map/${name}`;
         }
     })
 </script>
