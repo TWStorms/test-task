@@ -1,3 +1,6 @@
-<strong>Email Verification</strong>
-<div>Hello <strong>{{ $name }}</strong></div>
-<div><a href="{{url('verify/email/'.$token)}}">Click here to verify email</a></div>
+<div style="background-color: rebeccapurple; color: white; padding: 20px;">
+    <strong>Email Verification</strong>
+    <div>Hello <strong>{{ $name }}</strong></div>
+    <br><br>
+    <div><a href="{{url('verify/email/'.$token)}}">Click here to verify email</a></div>
+</div>

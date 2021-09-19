@@ -20,22 +20,22 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <input type="text" class="form-control" name="name" id="name" placeholder="Name">
+                                                    <input type="text" class="form-control" name="name" id="name" placeholder="Name" required>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <input type="number" class="form-control" name="phone_number" id="phone_number" placeholder="Phone Number">
+                                                    <input type="number" class="form-control" name="phone_number" id="phone_number" placeholder="Phone Number" required>
                                                 </div>
                                             </div>
                                             <div class="col-md-12">
                                                 <div class="form-group">
-                                                    <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject">
+                                                    <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
                                                 </div>
                                             </div>
                                             <div class="col-md-12">
                                                 <div class="form-group">
-                                                    <textarea name="contact_message" class="form-control" id="contact_message" cols="30" rows="7" placeholder="Message"></textarea>
+                                                    <textarea name="contact_message" class="form-control" id="contact_message" cols="30" rows="7" placeholder="Message" required></textarea>
                                                 </div>
                                             </div>
                                             <div class="col-md-12">
