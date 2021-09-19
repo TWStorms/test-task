@@ -1,5 +1,11 @@
 <?php
 
+/**
+ * Created by PhpStorm.
+ * Waleed Bin Khalid
+ * Date: 19/09/2021
+ */
+
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;

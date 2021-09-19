@@ -1,5 +1,11 @@
 <?php
 
+/**
+ * Created by PhpStorm.
+ * Waleed Bin Khalid
+ * Date: 19/09/2021
+ */
+
 namespace App\Http\Middleware;
 
 use App\Helpers\GeneralHelper;
@@ -20,7 +26,7 @@ class RedirectIfAuthenticated
      */
     public function handle($request, Closure $next, $guard = null)
     {
-        
+
 //        $user = \App\Models\User::where('email', $request->email)->first();
 //        Auth::loginUsingId($user->id, true);
 //        Auth::logout();

@@ -1,9 +1,13 @@
 <?php
 
+/**
+ * Created by PhpStorm.
+ * Waleed Bin Khalid
+ * Date: 19/09/2021
+ */
+
 namespace App\Helpers;
 
-//use App\Mail\MailsHandler;
-//use DataTables;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
