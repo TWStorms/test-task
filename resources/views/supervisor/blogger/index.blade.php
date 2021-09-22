@@ -13,7 +13,7 @@
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12">
                         <div class="card-header" style="border: none; background-color: mediumpurple;">
-                            <h2 class="text-center" style="font-family: 'Nunito', sans-serif; color: white; background-color: mediumpurple;"><strong>{!! __('Awaiting Users') !!}</strong></h2>
+                            <h2 class="text-center" style="font-family: 'Nunito', sans-serif; color: white; background-color: mediumpurple;"><strong>{!! __('Bloggers') !!}</strong></h2>
                         </div>
                     </div>
                 </div>

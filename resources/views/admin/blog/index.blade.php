@@ -23,7 +23,7 @@
                 <div class="card-body">
                     <div class="row justify-content-center">
                         <div class="col render table-responsive">
-                            @include('supervisor.blog.partials._listing')
+                            @include('admin.blog.partials._listing')
                         </div>
                     </div>
                 </div>

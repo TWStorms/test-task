@@ -34,7 +34,6 @@ class BlogController extends Controller
     const INDEX_PAGE = 'blogger.blog.index';
     const BLOG_EDIT_PAGE = 'blogger.blog.edit';
 
-
     /**
      * Interface IBlogContract
      *
@@ -54,7 +53,7 @@ class BlogController extends Controller
         $this->_blogService = $_blogService;
     }
 
-    public function index()
+    public function index(Request $request)
     {
         $blogs = $this->_blogService->getSpecificBlogs(Auth::user());
         return view(self::INDEX_PAGE, compact('blogs'));

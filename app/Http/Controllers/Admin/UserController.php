@@ -34,6 +34,7 @@ class UserController extends Controller
     # Pages
     const INDEX_PAGE = 'admin.user.index';
     const EDIT_PAGE = 'admin.user.edit';
+    const LISTING_PAGE = 'admin.user.partials._listing';
 
     /**
      * Interface IUserServiceContract
@@ -69,8 +70,13 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
-
-        $users = $this->_userService->getAllUser()->appends(request()->all());
+        $users = $this->_userService->getAllUser()->appends($request->all());
+        if ($request->ajax())
+        {
+            return response()->json([
+                'view' => view(self::LISTING_PAGE, compact('users'))->render()
+            ]);
+        }
 
         return view(self::INDEX_PAGE, compact('users'));
     }

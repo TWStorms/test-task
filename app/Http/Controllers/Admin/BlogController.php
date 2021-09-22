@@ -34,6 +34,7 @@ class BlogController extends Controller
     # Pages
     const INDEX_PAGE = 'admin.blog.index';
     const BLOG_EDIT_PAGE = 'admin.blog.edit';
+    const LISTING_PAGE = 'admin.blog.partials._listing';
 
 
     /**
@@ -65,9 +66,15 @@ class BlogController extends Controller
         $this->_userService = $_userService;
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        $blogs = $this->_blogService->paginate();
+        $blogs = $this->_blogService->paginate()->appends($request->all());
+        if ($request->ajax())
+        {
+            return response()->json([
+                'view' => view(self::LISTING_PAGE, compact('blogs'))->render()
+            ]);
+        }
         return view(self::INDEX_PAGE, compact('blogs'));
     }
 

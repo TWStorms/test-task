@@ -150,7 +150,7 @@ abstract class GeneralHelper
 
     public static function PAGINATION_SIZE()
     {
-        return 10;
+        return 2;
     }
 
     /**

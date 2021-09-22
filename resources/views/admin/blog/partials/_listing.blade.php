@@ -22,3 +22,6 @@
     @endif
     </tbody>
 </table>
+<div class="page-link" style="float:left">
+    {!! $blogs->links('pagination::bootstrap-4') !!}
+</div>
