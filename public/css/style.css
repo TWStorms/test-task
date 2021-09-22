@@ -101,7 +101,7 @@ header {
         font-size: 13px;
     }
 }
-@media (max-width: 768px) {
+@media (max-width: 998px) {
     .sidebar {
         height: 100vh;
         position: fixed;
@@ -254,9 +254,9 @@ input:hover {
     -webkit-background-size: 32px 32px;
     background-size: 32px 32px;
     border-width: 50px;
-    border-color: purple;
+    border: 3px solid var(--purple);;
     -webkit-border-radius: 50%;
-    border-radius: 40%;
+    border-radius: 50%;
     display: block;
     margin: 0;
     position: relative;

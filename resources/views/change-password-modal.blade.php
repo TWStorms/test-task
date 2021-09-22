@@ -5,7 +5,7 @@
                 <h5 class="modal-title" id="changePasswordModalLabel">Change Password</h5>
             </div>
             <div class="modal-body">
-                {!! Form::open(['url' => route('user.change-password'), 'method' => 'post', 'id' => 'change-password']) !!}
+                {!! Form::open(['url' => route(\App\Helpers\GeneralHelper::GET_ROLE(auth()->user()).'.change-password'), 'method' => 'post', 'id' => 'change-password']) !!}
                 <div class="row">
                     <div class="col-md-12 form-group mb-3">
                         <label for="old_password">

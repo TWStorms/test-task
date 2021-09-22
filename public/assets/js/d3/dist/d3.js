@@ -11187,9 +11187,9 @@ function tree() {
   }
 
   // Computes a preliminary x-coordinate for v. Before that, FIRST WALK is
-  // applied recursively to the children of v, as well as the function
-  // APPORTION. After spacing out the children by calling EXECUTE SHIFTS, the
-  // node v is placed to the midpoint of its outermost children.
+  // applied recursively to the blog of v, as well as the function
+  // APPORTION. After spacing out the blog by calling EXECUTE SHIFTS, the
+  // node v is placed to the midpoint of its outermost blog.
   function firstWalk(v) {
     var children = v.children,
         siblings = v.parent.children,

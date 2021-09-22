@@ -83,6 +83,11 @@ interface IUserServiceContract
      */
     public function update($id, $array);
 
+    /**
+     * @return mixed
+     */
+    public function create($request);
+
 
 
 

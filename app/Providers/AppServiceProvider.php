@@ -8,8 +8,12 @@
 
 namespace App\Providers;
 
+use App\Http\Contracts\IBlogContract;
+use App\Http\Contracts\ISubordinateContract;
 use App\Http\Contracts\ITransactionHistoryServiceContract;
 use App\Http\Contracts\IWalletServiceContract;
+use App\Http\Services\BlogService;
+use App\Http\Services\SubordinateService;
 use App\Http\Services\TransactionHistoryService;
 use App\Http\Services\UserService;
 use App\Http\Services\WalletService;
@@ -47,12 +51,12 @@ class AppServiceProvider extends ServiceProvider
             return $app->make(UserService::class);
         });
 
-        $this->app->singleton(ITransactionHistoryServiceContract::class, function ($app) {
-            return $app->make(TransactionHistoryService::class);
+        $this->app->singleton(ISubordinateContract::class, function ($app) {
+            return $app->make(SubordinateService::class);
         });
 
-        $this->app->singleton(IWalletServiceContract::class, function ($app) {
-            return $app->make(WalletService::class);
+        $this->app->singleton(IBlogContract::class, function ($app) {
+            return $app->make(BlogService::class);
         });
     }
 }

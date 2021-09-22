@@ -9,6 +9,7 @@
 namespace App\Http\Controllers;
 
 use App\Helpers\GeneralHelper;
+use App\Helpers\IUserStatus;
 use Illuminate\Http\Request;
 use App\Http\Contracts\IUserServiceContract;
 use Illuminate\Support\Facades\Auth;
@@ -44,8 +45,7 @@ class VerifyUserController extends Controller
     {
         if($user = $this->_userService->findUserByEmailVerificationToken($token))
         {
-            $user->email_verification_code = null;
-            $user->verify = 1;
+            $user->verify = IUserStatus::VERIFIED;
             $user->verified_at  = now()->format('Y-m-d H:i:s');
             $user->save();
             if(Auth::loginUsingId($user->id, true))

@@ -7,7 +7,7 @@
     {{--Load Preloader--}}
     @include('layouts.preloader')
     <br><br><br>
-    <div class="content">
+    <div class="content" style=" min-height: calc(100vh - 80px);">
 
         {{--Load Navbar--}}
         @include('layouts.navbar')
@@ -21,11 +21,7 @@
 
         </main>
     </div>
-
-
-    {{--Load Footer--}}
-    <div style="position: page; bottom: 0px; width: 100%;">
         @include('layouts.footer')
-    </div>
+
 </body>
 </html>

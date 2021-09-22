@@ -38,42 +38,20 @@ class UsersTableSeeder extends Seeder
 
         // Create Admin
         $adminUser = array(
-            'username' => "alaman",
+            'first_name' => "admin",
+            'last_name' => "admin",
             'password' => Hash::make('admin'),
-            'email' => 'alaman@gmail.com',
-            'phone_number' => '12345678',
-            'parent_id' => null,
+            'email' => 'admin@gmail.com',
             'verified_at' => now()->format('Y-m-d H:i:s'),
             'remember_token' => GeneralHelper::STR_RANDOM(50),
             'email_verification_code' => GeneralHelper::STR_RANDOM(50),
-            'level_completed' => 0,
-            'child_count' => 0,
             'verify' => \App\Helpers\IUserStatus::VERIFIED,
             'status' => \App\Helpers\IUserStatus::ACTIVE,
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         );
         $admin = User::create($adminUser);
-        $admin->assignRole('super-admin');
+        $admin->assignRole('admin');
 
-        // Create Sub Admin
-        $adminUser = array(
-            'username' => "alaman Worker",
-            'password' => Hash::make('sub_admin'),
-            'email' => 'alamanWorker@gmail.com',
-            'phone_number' => config('app.number'),
-            'parent_id' => null,
-            'verified_at' => now()->format('Y-m-d H:i:s'),
-            'remember_token' => GeneralHelper::STR_RANDOM(50),
-            'email_verification_code' => GeneralHelper::STR_RANDOM(50),
-            'level_completed' => 0,
-            'child_count' => 0,
-            'verify' => \App\Helpers\IUserStatus::VERIFIED,
-            'status' => \App\Helpers\IUserStatus::ACTIVE,
-            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
-            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
-        );
-        $admin = User::create($adminUser);
-        $admin->assignRole('sub-admin');
     }
 }

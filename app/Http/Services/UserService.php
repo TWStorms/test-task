@@ -9,9 +9,10 @@
 namespace App\Http\Services;
 
 use App\Helpers\GeneralHelper;
+use Illuminate\Support\Carbon;
 use App\Helpers\IUserStatus;
-use App\Helpers\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
 use App\Http\Repositories\UserRepo;
 use Illuminate\Support\Facades\Validator;
@@ -139,5 +140,15 @@ class UserService implements IUserServiceContract
     public function update($id, $array)
     {
         return $this->_userRepo->update($id, $array);
+    }
+
+    /**
+     * @param $request
+     *
+     * @return object
+     */
+    public function create($request)
+    {
+        return $this->_userRepo->create(['first_name' => $request->first_name, 'last_name' => $request->last_name, 'email' => $request->email, 'password' => Hash::make($request->password), 'verify' => IUserStatus::VERIFIED, 'status' => IUserStatus::ACTIVE, 'verified_at' => Carbon::now()->format('Y-m-d H:i:s'), 'created_at' => Carbon::now()->format('Y-m-d H:i:s'), 'updated_at' => Carbon::now()->format('Y-m-d H:i:s')]);
     }
 }

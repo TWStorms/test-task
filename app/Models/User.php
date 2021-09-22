@@ -27,7 +27,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'username', 'email', 'password', 'phone_number', 'parent_id', 'level_completed', 'registration_code', 'verify', 'status', 'email_verification_code', 'child_count'
+        'first_name','last_name', 'email', 'password', 'registration_code', 'verify', 'status', 'email_verification_code'
     ];
 
     /**
@@ -70,5 +70,15 @@ class User extends Authenticatable
     public function childrens()
     {
         return $this->hasMany(self::class,'parent_id')->where('status', IUserStatus::ACTIVE);
+    }
+
+    public function subordinate()
+    {
+        return $this->hasMany(Subordinate::class);
+    }
+
+    public function blogs()
+    {
+        return $this->hasMany(Blog::class);
     }
 }

@@ -28,25 +28,26 @@ use Illuminate\Support\Facades\Route;
 //Route::get('/home', 'HomeController@index')->name('home');
 
 
-Route::group(['middleware' => ['web', 'check-user-login']], static function () {
+Route::group(['middleware' => ['web', 'check-blogger-login']], static function () {
     Auth::routes(['login' => false]);
     Auth::routes(['logout' => false]);
     Route::get('/login', function () {
         return redirect('/');
     })->name('login');
 
-    Route::post('/login-user', 'Auth\LoginController@loginUser')->name('login.user');
+    Route::post('/login-blogger', 'Auth\LoginController@loginUser')->name('login.blogger');
 
     Route::get('password/reset/{id}/{token}', 'Auth\ResetPasswordController@showResetForm')
         ->name('password.reset');
     Route::get('/', 'Auth\LoginController@showLoginForm');
-    Route::get('/register-user/{username?}', 'Auth\LoginController@registerUser')->name('invitation.username.sign-up');
+    Route::get('/register-user', 'Auth\LoginController@registerUser')->name('invitation.username.sign-up');
 
-    Route::post('/create-user', 'Auth\RegisterController@registerUser')->name('create.user');
+    Route::post('/create-blogger', 'Auth\RegisterController@registerUser')->name('create.blogger');
     Route::post('/sign-up', 'Auth\RegisterController@signUp')->name('signUp');
-    Route::post('/sign-up', 'Auth\RegisterController@signUp');
 });
-    Route::post('/change/password', 'User\UserController@changePassword')->name('user.change-password');
+    Route::post('blogger/change-password', 'Blogger\UserController@changePassword')->name('blogger.change-password');
+    Route::post('supervisor/change-password', 'Supervisor\UserController@changePassword')->name('supervisor.change-password');
+    Route::post('admin/change-password', 'Admin\UserController@changePassword')->name('admin.change-password');
 
 
 Route::group(['middleware' => ['guest']], static function () {
@@ -54,41 +55,41 @@ Route::group(['middleware' => ['guest']], static function () {
     Route::get('verify/email/{token}', 'VerifyUserController@verifyUser');
 
 });
-Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
-Route::get('/contact-us', 'ContactUsController@page')->name('contact-us');
-Route::post('/contact-us/send', 'ContactUsController@send')->name('contact-us.send');
-Route::get('/about-us', 'AboutUsController@page')->name('about-us');
-Route::get('/term-condition', 'TermConditionController@page')->name('term-condition');
-Route::get('/policy', 'PolicyController@page')->name('policy');
 
-// Super Admin Routes
-Route::prefix('super-admin')->group(static function () {
-    Route::get('/dashboard', 'SuperAdmin\DashboardController@dashboard')->name('super-admin.dashboard');
-    Route::get('/profile', 'ProfileController@profile')->name('super-admin.profile');
-    Route::get('/transactions', 'SuperAdmin\TransactionController@index')->name('super-admin.transactions');
-    Route::get('/users', 'SuperAdmin\UserController@index')->name('super-admin.users');
-    Route::get('/map/{username}', 'SuperAdmin\UserController@map')->name('super-admin.map');
+// Admin Routes
+Route::prefix('admin')->group(static function () {
+    Route::get('/dashboard', 'Admin\DashboardController@dashboard')->name('admin.dashboard');
+    Route::get('/profile', 'ProfileController@profile')->name('admin.profile');
+    Route::post('/create-supervisor', 'Admin\UserController@createSupervisor')->name('admin.supervisor.create');
+    Route::get('/users', 'Admin\UserController@index')->name('admin.users');
+    Route::get('/edit-user/{id}', 'Admin\UserController@edit')->name('admin.user.edit');
+    Route::post('/update-user', 'Admin\UserController@update')->name('admin.user.update');
+    Route::get('/blog', 'Admin\BlogController@index')->name('admin.blog');
+    Route::post('/blog-create', 'Admin\BlogController@create')->name('admin.blog.create');
+    Route::get('/blog-edit/{id}', 'Admin\BlogController@edit')->name('admin.blog.edit');
+    Route::post('/blog-update', 'Admin\BlogController@update')->name('admin.blog.update');
 });
 
-// Sub Admin Routes
-Route::prefix('sub-admin')->group(static function () {
-    Route::get('/dashboard', 'SubAdmin\DashboardController@dashboard')->name('sub-admin.dashboard');
-    Route::get('/profile', 'ProfileController@profile')->name('sub-admin.profile');
-    Route::get('/awaiting-approval', 'SubAdmin\UserController@awaitingApproval')->name('sub-admin.awaiting-approval');
-    Route::post('/user/activate', 'SubAdmin\UserController@activateUser')->name('sub-admin.user-activate');
-    Route::get('/withdrawal-requests', 'SubAdmin\WithdrawalRequestController@index')->name('sub-admin.withdrawal-requests');
-    Route::get('/approve/withdrawal-request/{id}', 'SubAdmin\WithdrawalRequestController@approveWithdrawalRequest')->name('sub-admin.withdrawal-request.approve');
-    Route::get('/decline/withdrawal-requests{id}', 'SubAdmin\WithdrawalRequestController@declineWithdrawalRequest')->name('sub-admin.withdrawal-request.decline');
+// Supervisor Routes
+Route::prefix('supervisor')->group(static function () {
+    Route::get('/dashboard', 'Supervisor\DashboardController@dashboard')->name('supervisor.dashboard');
+    Route::get('/profile', 'ProfileController@profile')->name('supervisor.profile');
+    Route::get('/bloggers', 'Supervisor\UserController@bloggers')->name('supervisor.bloggers');
+    Route::get('/edit-blogger/{id}', 'Supervisor\UserController@edit')->name('supervisor.blogger.edit');
+    Route::post('/update-blogger', 'Supervisor\UserController@update')->name('supervisor.blogger.update');
+    Route::get('/blog', 'Supervisor\BlogController@index')->name('supervisor.blog');
+    Route::post('/blog-create', 'Supervisor\BlogController@create')->name('supervisor.blog.create');
+    Route::get('/blog-edit/{id}', 'Supervisor\BlogController@edit')->name('supervisor.blog.edit');
+    Route::post('/blog-update', 'Supervisor\BlogController@update')->name('supervisor.blog.update');
 });
 
-// User Routes
-Route::prefix('user')->group(static function () {
-    Route::get('/dashboard', 'User\DashboardController@dashboard')->name('user.dashboard');
-    Route::get('/profile', 'ProfileController@profile')->name('user.profile');
-    Route::get('/withdrawal-requests', 'User\WithdrawalRequestController@index')->name('user.withdrawal-requests');
-    Route::post('/withdrawal-request', 'User\WithdrawalRequestController@withdrawRequest')->name('user.withdraw-request');
-    Route::get('/users', 'User\UserController@index')->name('user.children');
-    Route::get('/transactions', 'User\TransactionController@index')->name('user.transactions');
-    Route::get('/map/{username}', 'User\UserController@map')->name('user.map');
+// blogger Routes
+Route::prefix('blogger')->group(static function () {
+    Route::get('/dashboard', 'Blogger\DashboardController@dashboard')->name('blogger.dashboard');
+    Route::get('/profile', 'ProfileController@profile')->name('blogger.profile');
+    Route::get('/blog', 'Blogger\BlogController@index')->name('blogger.blog');
+    Route::post('/blog-create', 'Blogger\BlogController@create')->name('blogger.blog.create');
+    Route::get('/blog-edit/{id}', 'Blogger\BlogController@edit')->name('blogger.blog.edit');
+    Route::post('/blog-update', 'Blogger\BlogController@update')->name('blogger.blog.update');
 });

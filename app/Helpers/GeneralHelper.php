@@ -69,14 +69,14 @@ abstract class GeneralHelper
      */
     public static function GET_ROLE($user)
     {
-        if($user->hasRole('super-admin'))
-            return 'super-admin';
+        if($user->hasRole('admin'))
+            return 'admin';
 
-        if($user->hasRole('sub-admin'))
-            return 'sub-admin';
+        if($user->hasRole('supervisor'))
+            return 'supervisor';
 
-        if($user->hasRole('user'))
-            return 'user';
+        if($user->hasRole('blogger'))
+            return 'blogger';
 
         return 'undefined';
     }
@@ -150,7 +150,7 @@ abstract class GeneralHelper
 
     public static function PAGINATION_SIZE()
     {
-        return 10;
+        return 2;
     }
 
     /**
@@ -169,11 +169,11 @@ abstract class GeneralHelper
      * @param null $user
      * @return bool
      */
-    public static function IS_SUPER_ADMIN($user = null): bool
+    public static function IS_ADMIN($user = null): bool
     {
         if($user)
-            return $user->hasRole(['super-admin']);
-        return Auth::user()->hasRole(['super-admin']);
+            return $user->hasRole(['admin']);
+        return Auth::user()->hasRole(['admin']);
     }
 
     /**
@@ -182,11 +182,11 @@ abstract class GeneralHelper
      * @param null $user
      * @return bool
      */
-    public static function IS_SUB_ADMIN($user = null): bool
+    public static function IS_SUPERVISOR($user = null): bool
     {
         if($user)
-            return $user->hasRole(['sub-admin']);
-        return Auth::user()->hasRole(['sub-admin']);
+            return $user->hasRole(['supervisor']);
+        return Auth::user()->hasRole(['supervisor']);
     }
 
     /**
@@ -195,11 +195,11 @@ abstract class GeneralHelper
      * @param null $user
      * @return bool
      */
-    public static function IS_USER($user = null): bool
+    public static function IS_BLOGGER($user = null): bool
     {
         if($user)
-            return $user->hasRole(['user']);
-        return Auth::user()->hasRole(['user']);
+            return $user->hasRole(['blogger']);
+        return Auth::user()->hasRole(['blogger']);
     }
 
     /**

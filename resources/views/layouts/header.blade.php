@@ -35,6 +35,7 @@
 {{----}}
 {{--    <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>--}}
 {{--    <script src="{{asset('bootstrap/js/bootstrap.js/bootstrap.min.js')}}"></script>--}}
+    @yield('page-css')
     <style>
         html, body, #maps, .mmp {
             height: 100%;
@@ -49,15 +50,11 @@
             width: 100%;
             height: 61vh;
         }
-    </style>
-    <style>
-        #container {
+       /* #container {
             max-width: 400px;
             height: 400px;
             margin: auto;
-        }
-    </style>
-    <style>
+        }*/
         .btn_wohover {
             background-color: #7665bf !important;
             border-color: #ffffff !important;

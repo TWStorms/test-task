@@ -280,7 +280,7 @@ export default class Nodes {
     };
 
     /**
-     * Return the children of the node.
+     * Return the blog of the node.
      * @param {string} id
      * @returns {ExportNodeProperties[]}
      */
@@ -378,7 +378,7 @@ export default class Nodes {
     };
 
     /**
-     * Return the children of a node.
+     * Return the blog of a node.
      * @param {Node} node
      * @returns {Node[]}
      */

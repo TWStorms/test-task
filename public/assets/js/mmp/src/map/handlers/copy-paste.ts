@@ -77,7 +77,7 @@ export default class CopyPaste {
     };
 
     /**
-     * If there are nodes in the mmp clipboard paste them in the map as children
+     * If there are nodes in the mmp clipboard paste them in the map as blog
      * of the node with the passed as parameter or of the selected node.
      * @param {string} id
      */
@@ -139,7 +139,7 @@ export default class CopyPaste {
                 return np.parent === nodeProperties.id;
             });
 
-            // If there are children add them.
+            // If there are blog add them.
             if (children.length > 0) {
                 const nodes = this.map.nodes.getNodes();
 

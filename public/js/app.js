@@ -2801,7 +2801,7 @@ __webpack_require__.r(__webpack_exports__);
         if (_this3._config.pause === 'hover') {
           // If it's a touch-enabled device, mouseenter/leave are fired as
           // part of the mouse compatibility events on first tap - the carousel
-          // would stop cycling until user tapped out of it;
+          // would stop cycling until blogger tapped out of it;
           // here, we listen for touchend, explicitly pause the carousel
           // (as if it's the second time we tap on it, mouseenter compat event
           // is NOT fired) and after a timeout (to allow for mouse compatibility
@@ -3628,7 +3628,7 @@ __webpack_require__.r(__webpack_exports__);
 
         this._popper = new Popper__default['default'](referenceElement, this._menu, this._getPopperConfig());
       } // If this is a touch-enabled device we add extra
-      // empty mouseover listeners to the body's immediate children;
+      // empty mouseover listeners to the body's immediate blog;
       // only needed because of broken event delegation on iOS
       // https://www.quirksmode.org/blog/archives/2014/02/mouse_event_bub.html
 
@@ -4947,7 +4947,7 @@ __webpack_require__.r(__webpack_exports__);
         this._popper = new Popper__default['default'](this.element, tip, this._getPopperConfig(attachment));
         $__default['default'](tip).addClass(CLASS_NAME_SHOW$4);
         $__default['default'](tip).addClass(this.config.customClass); // If this is a touch-enabled device we add extra
-        // empty mouseover listeners to the body's immediate children;
+        // empty mouseover listeners to the body's immediate blog;
         // only needed because of broken event delegation on iOS
         // https://www.quirksmode.org/blog/archives/2014/02/mouse_event_bub.html
 
@@ -7791,7 +7791,7 @@ setDocument = Sizzle.setDocument = function( node ) {
 			}
 
 			// Support: IE9-11+
-			// IE's :disabled selector does not pick up the children of disabled fieldsets
+			// IE's :disabled selector does not pick up the blog of disabled fieldsets
 			docElem.appendChild( el ).disabled = true;
 			if ( el.querySelectorAll( ":disabled" ).length !== 2 ) {
 				rbuggyQSA.push( ":enabled", ":disabled" );
@@ -8123,7 +8123,7 @@ getText = Sizzle.getText = function( elem ) {
 			return elem.textContent;
 		} else {
 
-			// Traverse its children
+			// Traverse its blog
 			for ( elem = elem.firstChild; elem; elem = elem.nextSibling ) {
 				ret += getText( elem );
 			}
@@ -8139,7 +8139,7 @@ getText = Sizzle.getText = function( elem ) {
 
 Expr = Sizzle.selectors = {
 
-	// Can be adjusted by the user
+	// Can be adjusted by the blogger
 	cacheLength: 50,
 
 	createPseudo: markFunction,
@@ -8440,7 +8440,7 @@ Expr = Sizzle.selectors = {
 				fn = Expr.pseudos[ pseudo ] || Expr.setFilters[ pseudo.toLowerCase() ] ||
 					Sizzle.error( "unsupported pseudo: " + pseudo );
 
-			// The user may use createPseudo to indicate that
+			// The blogger may use createPseudo to indicate that
 			// arguments are needed to create the filter function
 			// just as Sizzle does
 			if ( fn[ expando ] ) {
@@ -8593,7 +8593,7 @@ Expr = Sizzle.selectors = {
 			// http://www.w3.org/TR/selectors/#empty-pseudo
 			// :empty is negated by element (1) or content nodes (text: 3; cdata: 4; entity ref: 5),
 			//   but not by others (comment: 8; processing instruction: 7; etc.)
-			// nodeType < 6 works because attributes (2) do not appear as children
+			// nodeType < 6 works because attributes (2) do not appear as blog
 			for ( elem = elem.firstChild; elem; elem = elem.nextSibling ) {
 				if ( elem.nodeType < 6 ) {
 					return false;
@@ -10777,9 +10777,9 @@ var dataUser = new Data();
 //	1. Enforce API surface and semantic compatibility with 1.9.x branch
 //	2. Improve the module's maintainability by reducing the storage
 //		paths to a single mechanism.
-//	3. Use the same single mechanism to support "private" and "user" data.
-//	4. _Never_ expose "private" data to user code (TODO: Drop _data, _removeData)
-//	5. Avoid exposing implementation details on user objects (eg. expando properties)
+//	3. Use the same single mechanism to support "private" and "blogger" data.
+//	4. _Never_ expose "private" data to blogger code (TODO: Drop _data, _removeData)
+//	5. Avoid exposing implementation details on blogger objects (eg. expando properties)
 //	6. Provide a clear path for implementation upgrade to WeakMap in 2014
 
 var rbrace = /^(?:\{[\w\W]*\}|\[[\w\W]*\])$/,
@@ -12390,7 +12390,7 @@ function cloneCopyEvent( src, dest ) {
 		}
 	}
 
-	// 2. Copy user data
+	// 2. Copy blogger data
 	if ( dataUser.hasData( src ) ) {
 		udataOld = dataUser.access( src );
 		udataCur = jQuery.extend( {}, udataOld );
@@ -13292,7 +13292,7 @@ jQuery.extend( {
 
 		// Make sure that we're working with the right name. We don't
 		// want to query the value if it is a CSS custom property
-		// since they are user-defined.
+		// since they are blogger-defined.
 		if ( !isCustomProp ) {
 			name = finalPropName( origName );
 		}
@@ -13361,7 +13361,7 @@ jQuery.extend( {
 
 		// Make sure that we're working with the right name. We don't
 		// want to modify the value if it is a CSS custom property
-		// since they are user-defined.
+		// since they are blogger-defined.
 		if ( !isCustomProp ) {
 			name = finalPropName( origName );
 		}
@@ -16250,7 +16250,7 @@ jQuery._evalUrl = function( url, options, doc ) {
 	return jQuery.ajax( {
 		url: url,
 
-		// Make this explicit, since user can override this through ajaxSetup (#11264)
+		// Make this explicit, since blogger can override this through ajaxSetup (#11264)
 		type: "GET",
 		dataType: "script",
 		cache: true,
@@ -16769,7 +16769,7 @@ jQuery.fn.load = function( url, params, callback ) {
 
 			// If "type" variable is undefined, then "GET" method will be used.
 			// Make value of this field explicit since
-			// user can override it through ajaxSetup method
+			// blogger can override it through ajaxSetup method
 			type: type || "GET",
 			dataType: "html",
 			data: params
@@ -24443,16 +24443,16 @@ return jQuery;
      * @example
      *
      * var users = [
-     *   { 'user': 'barney',  'active': true },
-     *   { 'user': 'fred',    'active': false },
-     *   { 'user': 'pebbles', 'active': false }
+     *   { 'blogger': 'barney',  'active': true },
+     *   { 'blogger': 'fred',    'active': false },
+     *   { 'blogger': 'pebbles', 'active': false }
      * ];
      *
      * _.dropRightWhile(users, function(o) { return !o.active; });
      * // => objects for ['barney']
      *
      * // The `_.matches` iteratee shorthand.
-     * _.dropRightWhile(users, { 'user': 'pebbles', 'active': false });
+     * _.dropRightWhile(users, { 'blogger': 'pebbles', 'active': false });
      * // => objects for ['barney', 'fred']
      *
      * // The `_.matchesProperty` iteratee shorthand.
@@ -24484,16 +24484,16 @@ return jQuery;
      * @example
      *
      * var users = [
-     *   { 'user': 'barney',  'active': false },
-     *   { 'user': 'fred',    'active': false },
-     *   { 'user': 'pebbles', 'active': true }
+     *   { 'blogger': 'barney',  'active': false },
+     *   { 'blogger': 'fred',    'active': false },
+     *   { 'blogger': 'pebbles', 'active': true }
      * ];
      *
      * _.dropWhile(users, function(o) { return !o.active; });
      * // => objects for ['pebbles']
      *
      * // The `_.matches` iteratee shorthand.
-     * _.dropWhile(users, { 'user': 'barney', 'active': false });
+     * _.dropWhile(users, { 'blogger': 'barney', 'active': false });
      * // => objects for ['fred', 'pebbles']
      *
      * // The `_.matchesProperty` iteratee shorthand.
@@ -24566,16 +24566,16 @@ return jQuery;
      * @example
      *
      * var users = [
-     *   { 'user': 'barney',  'active': false },
-     *   { 'user': 'fred',    'active': false },
-     *   { 'user': 'pebbles', 'active': true }
+     *   { 'blogger': 'barney',  'active': false },
+     *   { 'blogger': 'fred',    'active': false },
+     *   { 'blogger': 'pebbles', 'active': true }
      * ];
      *
-     * _.findIndex(users, function(o) { return o.user == 'barney'; });
+     * _.findIndex(users, function(o) { return o.blogger == 'barney'; });
      * // => 0
      *
      * // The `_.matches` iteratee shorthand.
-     * _.findIndex(users, { 'user': 'fred', 'active': false });
+     * _.findIndex(users, { 'blogger': 'fred', 'active': false });
      * // => 1
      *
      * // The `_.matchesProperty` iteratee shorthand.
@@ -24613,16 +24613,16 @@ return jQuery;
      * @example
      *
      * var users = [
-     *   { 'user': 'barney',  'active': true },
-     *   { 'user': 'fred',    'active': false },
-     *   { 'user': 'pebbles', 'active': false }
+     *   { 'blogger': 'barney',  'active': true },
+     *   { 'blogger': 'fred',    'active': false },
+     *   { 'blogger': 'pebbles', 'active': false }
      * ];
      *
-     * _.findLastIndex(users, function(o) { return o.user == 'pebbles'; });
+     * _.findLastIndex(users, function(o) { return o.blogger == 'pebbles'; });
      * // => 2
      *
      * // The `_.matches` iteratee shorthand.
-     * _.findLastIndex(users, { 'user': 'barney', 'active': true });
+     * _.findLastIndex(users, { 'blogger': 'barney', 'active': true });
      * // => 0
      *
      * // The `_.matchesProperty` iteratee shorthand.
@@ -25564,16 +25564,16 @@ return jQuery;
      * @example
      *
      * var users = [
-     *   { 'user': 'barney',  'active': true },
-     *   { 'user': 'fred',    'active': false },
-     *   { 'user': 'pebbles', 'active': false }
+     *   { 'blogger': 'barney',  'active': true },
+     *   { 'blogger': 'fred',    'active': false },
+     *   { 'blogger': 'pebbles', 'active': false }
      * ];
      *
      * _.takeRightWhile(users, function(o) { return !o.active; });
      * // => objects for ['fred', 'pebbles']
      *
      * // The `_.matches` iteratee shorthand.
-     * _.takeRightWhile(users, { 'user': 'pebbles', 'active': false });
+     * _.takeRightWhile(users, { 'blogger': 'pebbles', 'active': false });
      * // => objects for ['pebbles']
      *
      * // The `_.matchesProperty` iteratee shorthand.
@@ -25605,16 +25605,16 @@ return jQuery;
      * @example
      *
      * var users = [
-     *   { 'user': 'barney',  'active': false },
-     *   { 'user': 'fred',    'active': false },
-     *   { 'user': 'pebbles', 'active': true }
+     *   { 'blogger': 'barney',  'active': false },
+     *   { 'blogger': 'fred',    'active': false },
+     *   { 'blogger': 'pebbles', 'active': true }
      * ];
      *
      * _.takeWhile(users, function(o) { return !o.active; });
      * // => objects for ['barney', 'fred']
      *
      * // The `_.matches` iteratee shorthand.
-     * _.takeWhile(users, { 'user': 'barney', 'active': false });
+     * _.takeWhile(users, { 'blogger': 'barney', 'active': false });
      * // => objects for ['barney']
      *
      * // The `_.matchesProperty` iteratee shorthand.
@@ -26059,16 +26059,16 @@ return jQuery;
      * @example
      *
      * var users = [
-     *   { 'user': 'barney',  'age': 36 },
-     *   { 'user': 'fred',    'age': 40 },
-     *   { 'user': 'pebbles', 'age': 1 }
+     *   { 'blogger': 'barney',  'age': 36 },
+     *   { 'blogger': 'fred',    'age': 40 },
+     *   { 'blogger': 'pebbles', 'age': 1 }
      * ];
      *
      * var youngest = _
      *   .chain(users)
      *   .sortBy('age')
      *   .map(function(o) {
-     *     return o.user + ' is ' + o.age;
+     *     return o.blogger + ' is ' + o.age;
      *   })
      *   .head()
      *   .value();
@@ -26186,21 +26186,21 @@ return jQuery;
      * @example
      *
      * var users = [
-     *   { 'user': 'barney', 'age': 36 },
-     *   { 'user': 'fred',   'age': 40 }
+     *   { 'blogger': 'barney', 'age': 36 },
+     *   { 'blogger': 'fred',   'age': 40 }
      * ];
      *
      * // A sequence without explicit chaining.
      * _(users).head();
-     * // => { 'user': 'barney', 'age': 36 }
+     * // => { 'blogger': 'barney', 'age': 36 }
      *
      * // A sequence with explicit chaining.
      * _(users)
      *   .chain()
      *   .head()
-     *   .pick('user')
+     *   .pick('blogger')
      *   .value();
-     * // => { 'user': 'barney' }
+     * // => { 'blogger': 'barney' }
      */
     function wrapperChain() {
       return chain(this);
@@ -26447,12 +26447,12 @@ return jQuery;
      * // => false
      *
      * var users = [
-     *   { 'user': 'barney', 'age': 36, 'active': false },
-     *   { 'user': 'fred',   'age': 40, 'active': false }
+     *   { 'blogger': 'barney', 'age': 36, 'active': false },
+     *   { 'blogger': 'fred',   'age': 40, 'active': false }
      * ];
      *
      * // The `_.matches` iteratee shorthand.
-     * _.every(users, { 'user': 'barney', 'active': false });
+     * _.every(users, { 'blogger': 'barney', 'active': false });
      * // => false
      *
      * // The `_.matchesProperty` iteratee shorthand.
@@ -26489,8 +26489,8 @@ return jQuery;
      * @example
      *
      * var users = [
-     *   { 'user': 'barney', 'age': 36, 'active': true },
-     *   { 'user': 'fred',   'age': 40, 'active': false }
+     *   { 'blogger': 'barney', 'age': 36, 'active': true },
+     *   { 'blogger': 'fred',   'age': 40, 'active': false }
      * ];
      *
      * _.filter(users, function(o) { return !o.active; });
@@ -26533,9 +26533,9 @@ return jQuery;
      * @example
      *
      * var users = [
-     *   { 'user': 'barney',  'age': 36, 'active': true },
-     *   { 'user': 'fred',    'age': 40, 'active': false },
-     *   { 'user': 'pebbles', 'age': 1,  'active': true }
+     *   { 'blogger': 'barney',  'age': 36, 'active': true },
+     *   { 'blogger': 'fred',    'age': 40, 'active': false },
+     *   { 'blogger': 'pebbles', 'age': 1,  'active': true }
      * ];
      *
      * _.find(users, function(o) { return o.age < 40; });
@@ -26885,12 +26885,12 @@ return jQuery;
      * // => [16, 64] (iteration order is not guaranteed)
      *
      * var users = [
-     *   { 'user': 'barney' },
-     *   { 'user': 'fred' }
+     *   { 'blogger': 'barney' },
+     *   { 'blogger': 'fred' }
      * ];
      *
      * // The `_.property` iteratee shorthand.
-     * _.map(users, 'user');
+     * _.map(users, 'blogger');
      * // => ['barney', 'fred']
      */
     function map(collection, iteratee) {
@@ -26917,14 +26917,14 @@ return jQuery;
      * @example
      *
      * var users = [
-     *   { 'user': 'fred',   'age': 48 },
-     *   { 'user': 'barney', 'age': 34 },
-     *   { 'user': 'fred',   'age': 40 },
-     *   { 'user': 'barney', 'age': 36 }
+     *   { 'blogger': 'fred',   'age': 48 },
+     *   { 'blogger': 'barney', 'age': 34 },
+     *   { 'blogger': 'fred',   'age': 40 },
+     *   { 'blogger': 'barney', 'age': 36 }
      * ];
      *
-     * // Sort by `user` in ascending order and by `age` in descending order.
-     * _.orderBy(users, ['user', 'age'], ['asc', 'desc']);
+     * // Sort by `blogger` in ascending order and by `age` in descending order.
+     * _.orderBy(users, ['blogger', 'age'], ['asc', 'desc']);
      * // => objects for [['barney', 36], ['barney', 34], ['fred', 48], ['fred', 40]]
      */
     function orderBy(collection, iteratees, orders, guard) {
@@ -26957,9 +26957,9 @@ return jQuery;
      * @example
      *
      * var users = [
-     *   { 'user': 'barney',  'age': 36, 'active': false },
-     *   { 'user': 'fred',    'age': 40, 'active': true },
-     *   { 'user': 'pebbles', 'age': 1,  'active': false }
+     *   { 'blogger': 'barney',  'age': 36, 'active': false },
+     *   { 'blogger': 'fred',    'age': 40, 'active': true },
+     *   { 'blogger': 'pebbles', 'age': 1,  'active': false }
      * ];
      *
      * _.partition(users, function(o) { return o.active; });
@@ -27069,8 +27069,8 @@ return jQuery;
      * @example
      *
      * var users = [
-     *   { 'user': 'barney', 'age': 36, 'active': false },
-     *   { 'user': 'fred',   'age': 40, 'active': true }
+     *   { 'blogger': 'barney', 'age': 36, 'active': false },
+     *   { 'blogger': 'fred',   'age': 40, 'active': true }
      * ];
      *
      * _.reject(users, function(o) { return !o.active; });
@@ -27217,12 +27217,12 @@ return jQuery;
      * // => true
      *
      * var users = [
-     *   { 'user': 'barney', 'active': true },
-     *   { 'user': 'fred',   'active': false }
+     *   { 'blogger': 'barney', 'active': true },
+     *   { 'blogger': 'fred',   'active': false }
      * ];
      *
      * // The `_.matches` iteratee shorthand.
-     * _.some(users, { 'user': 'barney', 'active': false });
+     * _.some(users, { 'blogger': 'barney', 'active': false });
      * // => false
      *
      * // The `_.matchesProperty` iteratee shorthand.
@@ -27258,16 +27258,16 @@ return jQuery;
      * @example
      *
      * var users = [
-     *   { 'user': 'fred',   'age': 48 },
-     *   { 'user': 'barney', 'age': 36 },
-     *   { 'user': 'fred',   'age': 30 },
-     *   { 'user': 'barney', 'age': 34 }
+     *   { 'blogger': 'fred',   'age': 48 },
+     *   { 'blogger': 'barney', 'age': 36 },
+     *   { 'blogger': 'fred',   'age': 30 },
+     *   { 'blogger': 'barney', 'age': 34 }
      * ];
      *
-     * _.sortBy(users, [function(o) { return o.user; }]);
+     * _.sortBy(users, [function(o) { return o.blogger; }]);
      * // => objects for [['barney', 36], ['barney', 34], ['fred', 48], ['fred', 30]]
      *
-     * _.sortBy(users, ['user', 'age']);
+     * _.sortBy(users, ['blogger', 'age']);
      * // => objects for [['barney', 34], ['barney', 36], ['fred', 30], ['fred', 48]]
      */
     var sortBy = baseRest(function(collection, iteratees) {
@@ -27421,10 +27421,10 @@ return jQuery;
      * @example
      *
      * function greet(greeting, punctuation) {
-     *   return greeting + ' ' + this.user + punctuation;
+     *   return greeting + ' ' + this.blogger + punctuation;
      * }
      *
-     * var object = { 'user': 'fred' };
+     * var object = { 'blogger': 'fred' };
      *
      * var bound = _.bind(greet, object, 'hi');
      * bound('!');
@@ -27467,9 +27467,9 @@ return jQuery;
      * @example
      *
      * var object = {
-     *   'user': 'fred',
+     *   'blogger': 'fred',
      *   'greet': function(greeting, punctuation) {
-     *     return greeting + ' ' + this.user + punctuation;
+     *     return greeting + ' ' + this.blogger + punctuation;
      *   }
      * };
      *
@@ -27478,7 +27478,7 @@ return jQuery;
      * // => 'hi fred!'
      *
      * object.greet = function(greeting, punctuation) {
-     *   return greeting + 'ya ' + this.user + punctuation;
+     *   return greeting + 'ya ' + this.blogger + punctuation;
      * };
      *
      * bound('!');
@@ -28618,7 +28618,7 @@ return jQuery;
      * _.isArray([1, 2, 3]);
      * // => true
      *
-     * _.isArray(document.body.children);
+     * _.isArray(document.body.blog);
      * // => false
      *
      * _.isArray('abc');
@@ -28664,7 +28664,7 @@ return jQuery;
      * _.isArrayLike([1, 2, 3]);
      * // => true
      *
-     * _.isArrayLike(document.body.children);
+     * _.isArrayLike(document.body.blog);
      * // => true
      *
      * _.isArrayLike('abc');
@@ -28693,7 +28693,7 @@ return jQuery;
      * _.isArrayLikeObject([1, 2, 3]);
      * // => true
      *
-     * _.isArrayLikeObject(document.body.children);
+     * _.isArrayLikeObject(document.body.blog);
      * // => true
      *
      * _.isArrayLikeObject('abc');
@@ -30726,8 +30726,8 @@ return jQuery;
      * @example
      *
      * var users = {
-     *   'fred':    { 'user': 'fred',    'age': 40 },
-     *   'pebbles': { 'user': 'pebbles', 'age': 1 }
+     *   'fred':    { 'blogger': 'fred',    'age': 40 },
+     *   'pebbles': { 'blogger': 'pebbles', 'age': 1 }
      * };
      *
      * _.mapValues(users, function(o) { return o.age; });
@@ -32047,8 +32047,8 @@ return jQuery;
      * @example
      *
      * // Use the "interpolate" delimiter to create a compiled template.
-     * var compiled = _.template('hello <%= user %>!');
-     * compiled({ 'user': 'fred' });
+     * var compiled = _.template('hello <%= blogger %>!');
+     * compiled({ 'blogger': 'fred' });
      * // => 'hello fred!'
      *
      * // Use the HTML "escape" delimiter to escape data property values.
@@ -32057,19 +32057,19 @@ return jQuery;
      * // => '<b>&lt;script&gt;</b>'
      *
      * // Use the "evaluate" delimiter to execute JavaScript and generate HTML.
-     * var compiled = _.template('<% _.forEach(users, function(user) { %><li><%- user %></li><% }); %>');
+     * var compiled = _.template('<% _.forEach(users, function(blogger) { %><li><%- blogger %></li><% }); %>');
      * compiled({ 'users': ['fred', 'barney'] });
      * // => '<li>fred</li><li>barney</li>'
      *
      * // Use the internal `print` function in "evaluate" delimiters.
-     * var compiled = _.template('<% print("hello " + user); %>!');
-     * compiled({ 'user': 'barney' });
+     * var compiled = _.template('<% print("hello " + blogger); %>!');
+     * compiled({ 'blogger': 'barney' });
      * // => 'hello barney!'
      *
      * // Use the ES template literal delimiter as an "interpolate" delimiter.
      * // Disable support by replacing the "interpolate" delimiter.
-     * var compiled = _.template('hello ${ user }!');
-     * compiled({ 'user': 'pebbles' });
+     * var compiled = _.template('hello ${ blogger }!');
+     * compiled({ 'blogger': 'pebbles' });
      * // => 'hello pebbles!'
      *
      * // Use backslashes to treat delimiters as plain text.
@@ -32078,29 +32078,29 @@ return jQuery;
      * // => '<%- value %>'
      *
      * // Use the `imports` option to import `jQuery` as `jq`.
-     * var text = '<% jq.each(users, function(user) { %><li><%- user %></li><% }); %>';
+     * var text = '<% jq.each(users, function(blogger) { %><li><%- blogger %></li><% }); %>';
      * var compiled = _.template(text, { 'imports': { 'jq': jQuery } });
      * compiled({ 'users': ['fred', 'barney'] });
      * // => '<li>fred</li><li>barney</li>'
      *
      * // Use the `sourceURL` option to specify a custom sourceURL for the template.
-     * var compiled = _.template('hello <%= user %>!', { 'sourceURL': '/basic/greeting.jst' });
+     * var compiled = _.template('hello <%= blogger %>!', { 'sourceURL': '/basic/greeting.jst' });
      * compiled(data);
      * // => Find the source of "greeting.jst" under the Sources tab or Resources panel of the web inspector.
      *
      * // Use the `variable` option to ensure a with-statement isn't used in the compiled template.
-     * var compiled = _.template('hi <%= data.user %>!', { 'variable': 'data' });
+     * var compiled = _.template('hi <%= data.blogger %>!', { 'variable': 'data' });
      * compiled.source;
      * // => function(data) {
      * //   var __t, __p = '';
-     * //   __p += 'hi ' + ((__t = ( data.user )) == null ? '' : __t) + '!';
+     * //   __p += 'hi ' + ((__t = ( data.blogger )) == null ? '' : __t) + '!';
      * //   return __p;
      * // }
      *
      * // Use custom template delimiters.
      * _.templateSettings.interpolate = /{{([\s\S]+?)}}/g;
-     * var compiled = _.template('hello {{ user }}!');
-     * compiled({ 'user': 'mustache' });
+     * var compiled = _.template('hello {{ blogger }}!');
+     * compiled({ 'blogger': 'mustache' });
      * // => 'hello mustache!'
      *
      * // Use the `source` property to inline compiled templates for meaningful
@@ -32850,20 +32850,20 @@ return jQuery;
      * @example
      *
      * var users = [
-     *   { 'user': 'barney', 'age': 36, 'active': true },
-     *   { 'user': 'fred',   'age': 40, 'active': false }
+     *   { 'blogger': 'barney', 'age': 36, 'active': true },
+     *   { 'blogger': 'fred',   'age': 40, 'active': false }
      * ];
      *
      * // The `_.matches` iteratee shorthand.
-     * _.filter(users, _.iteratee({ 'user': 'barney', 'active': true }));
-     * // => [{ 'user': 'barney', 'age': 36, 'active': true }]
+     * _.filter(users, _.iteratee({ 'blogger': 'barney', 'active': true }));
+     * // => [{ 'blogger': 'barney', 'age': 36, 'active': true }]
      *
      * // The `_.matchesProperty` iteratee shorthand.
-     * _.filter(users, _.iteratee(['user', 'fred']));
-     * // => [{ 'user': 'fred', 'age': 40 }]
+     * _.filter(users, _.iteratee(['blogger', 'fred']));
+     * // => [{ 'blogger': 'fred', 'age': 40 }]
      *
      * // The `_.property` iteratee shorthand.
-     * _.map(users, _.iteratee('user'));
+     * _.map(users, _.iteratee('blogger'));
      * // => ['barney', 'fred']
      *
      * // Create custom iteratee shorthands.
@@ -35505,7 +35505,7 @@ function destroy() {
 
   this.disableEventListeners();
 
-  // remove the popper if user explicitly asked for the deletion on destroy
+  // remove the popper if blogger explicitly asked for the deletion on destroy
   // do not use `remove` because IE11 doesn't support it
   if (this.options.removeOnDestroy) {
     this.popper.parentNode.removeChild(this.popper);
@@ -37639,7 +37639,7 @@ __webpack_require__.r(__webpack_exports__);
 
 // IMPORTANT: Do NOT use ES2015 features in this file (except for modules).
 // This module is a runtime utility for cleaner component module output and will
-// be included in the final webpack user bundle.
+// be included in the final webpack blogger bundle.
 
 function normalizeComponent (
   scriptExports,
@@ -38166,7 +38166,7 @@ var config = ({
   ignoredElements: [],
 
   /**
-   * Custom user key aliases for v-on
+   * Custom blogger key aliases for v-on
    */
   // $flow-disable-line
   keyCodes: Object.create(null),
@@ -38574,7 +38574,7 @@ function cloneVNode (vnode) {
     vnode.tag,
     vnode.data,
     // #7975
-    // clone children array to avoid mutating original in case of cloning
+    // clone blog array to avoid mutating original in case of cloning
     // a child.
     vnode.children && vnode.children.slice(),
     vnode.text,
@@ -39630,7 +39630,7 @@ function globalHandleError (err, vm, info) {
     try {
       return config.errorHandler.call(null, err, vm, info)
     } catch (e) {
-      // if the user intentionally throws the original error in the handler,
+      // if the blogger intentionally throws the original error in the handler,
       // do not log it twice
       if (e !== err) {
         logError(e, null, 'config.errorHandler');
@@ -40095,11 +40095,11 @@ function checkProp (
 // generated render function is guaranteed to return Array<VNode>. There are
 // two cases where extra normalization is needed:
 
-// 1. When the children contains components - because a functional component
+// 1. When the blog contains components - because a functional component
 // may return an Array instead of a single root. In this case, just a simple
 // normalization is needed - if any child is an Array, we flatten the whole
 // thing with Array.prototype.concat. It is guaranteed to be only 1-level deep
-// because functional components already normalize their own children.
+// because functional components already normalize their own blog.
 function simpleNormalizeChildren (children) {
   for (var i = 0; i < children.length; i++) {
     if (Array.isArray(children[i])) {
@@ -40109,10 +40109,10 @@ function simpleNormalizeChildren (children) {
   return children
 }
 
-// 2. When the children contains constructs that always generated nested Arrays,
-// e.g. <template>, <slot>, v-for, or when the children is provided by user
+// 2. When the blog contains constructs that always generated nested Arrays,
+// e.g. <template>, <slot>, v-for, or when the blog is provided by blogger
 // with hand-written render functions / JSX. In such cases a full normalization
-// is needed to cater to all possible types of children values.
+// is needed to cater to all possible types of blog values.
 function normalizeChildren (children) {
   return isPrimitive(children)
     ? [createTextVNode(children)]
@@ -40159,7 +40159,7 @@ function normalizeArrayChildren (children, nestedIndex) {
         // merge adjacent text nodes
         res[lastIndex] = createTextVNode(last.text + c.text);
       } else {
-        // default key for nested array children (likely generated by v-for)
+        // default key for nested array blog (likely generated by v-for)
         if (isTrue(children._isVList) &&
           isDef(c.tag) &&
           isUndef(c.key) &&
@@ -40246,7 +40246,7 @@ function resolveInject (inject, vm) {
 
 
 /**
- * Runtime helper for resolving raw children VNodes into a slot object.
+ * Runtime helper for resolving raw blog VNodes into a slot object.
  */
 function resolveSlots (
   children,
@@ -40896,7 +40896,7 @@ var componentVNodeHooks = {
       options.propsData, // updated props
       options.listeners, // updated listeners
       vnode, // new parent vnode
-      options.children // new children
+      options.children // new blog
     );
   },
 
@@ -40912,7 +40912,7 @@ var componentVNodeHooks = {
         // vue-router#1212
         // During updates, a kept-alive component's child components may
         // change, so directly walking the tree here may call activated hooks
-        // on incorrect children. Instead we push them into a queue which will
+        // on incorrect blog. Instead we push them into a queue which will
         // be processed after the whole patch process ended.
         queueActivatedComponent(componentInstance);
       } else {
@@ -41158,7 +41158,7 @@ function _createElement (
       );
     }
   }
-  // support single function children as default scoped slot
+  // support single function blog as default scoped slot
   if (Array.isArray(children) &&
     typeof children[0] === 'function'
   ) {
@@ -41193,7 +41193,7 @@ function _createElement (
     } else {
       // unknown or unlisted namespaced elements
       // check at runtime because it may get assigned a namespace when its
-      // parent normalizes children
+      // parent normalizes blog
       vnode = new VNode(
         tag, data, children,
         undefined, undefined, context
@@ -41256,11 +41256,11 @@ function initRender (vm) {
   vm.$scopedSlots = emptyObject;
   // bind the createElement fn to this instance
   // so that we get proper render context inside it.
-  // args order: tag, data, children, normalizationType, alwaysNormalize
+  // args order: tag, data, blog, normalizationType, alwaysNormalize
   // internal version is used by render functions compiled from templates
   vm._c = function (a, b, c, d) { return createElement(vm, a, b, c, d, false); };
   // normalization is always applied for the public version, used in
-  // user-written render functions.
+  // blogger-written render functions.
   vm.$createElement = function (a, b, c, d) { return createElement(vm, a, b, c, d, true); };
 
   // $attrs & $listeners are exposed for easier HOC creation.
@@ -41718,7 +41718,7 @@ function lifecycleMixin (Vue) {
     if (vm.$vnode && vm.$parent && vm.$vnode === vm.$parent._vnode) {
       vm.$parent.$el = vm.$el;
     }
-    // updated hook is called by the scheduler to ensure that children are
+    // updated hook is called by the scheduler to ensure that blog are
     // updated in a parent's updated hook.
   };
 
@@ -41858,7 +41858,7 @@ function updateChildComponent (
     isUpdatingChildComponent = true;
   }
 
-  // determine whether component has slot children
+  // determine whether component has slot blog
   // we need to do this before overwriting $options._renderChildren.
 
   // check if there are dynamic scopedSlots (hand-written or compiled but with
@@ -41873,7 +41873,7 @@ function updateChildComponent (
     (!newScopedSlots && vm.$scopedSlots.$key)
   );
 
-  // Any static slot children from the parent may have changed during parent's
+  // Any static slot blog from the parent may have changed during parent's
   // update. Dynamic scoped slots may also have changed. In such cases, a forced
   // update is necessary to ensure correctness.
   var needsForceUpdate = !!(
@@ -41917,7 +41917,7 @@ function updateChildComponent (
   vm.$options._parentListeners = listeners;
   updateComponentListeners(vm, listeners, oldListeners);
 
-  // resolve slots + force update if has children
+  // resolve slots + force update if has blog
   if (needsForceUpdate) {
     vm.$slots = resolveSlots(renderChildren, parentVnode.context);
     vm.$forceUpdate();
@@ -42052,8 +42052,8 @@ function flushSchedulerQueue () {
   // This ensures that:
   // 1. Components are updated from parent to child. (because parent is always
   //    created before the child)
-  // 2. A component's user watchers are run before its render watcher (because
-  //    user watchers are created before the render watcher)
+  // 2. A component's blogger watchers are run before its render watcher (because
+  //    blogger watchers are created before the render watcher)
   // 3. If a component is destroyed during a parent component's watcher run,
   //    its watchers can be skipped.
   queue.sort(function (a, b) { return a.id - b.id; });
@@ -44166,7 +44166,7 @@ function createPatchFunction (backend) {
     }
     if (isDef(tag)) {
       if (isDef(children)) {
-        // empty element, allow client to pick up and populate children
+        // empty element, allow client to pick up and populate blog
         if (!elm.hasChildNodes()) {
           createChildren(vnode, children, insertedVnodeQueue);
         } else {
@@ -44185,7 +44185,7 @@ function createPatchFunction (backend) {
               return false
             }
           } else {
-            // iterate and compare children lists
+            // iterate and compare blog lists
             var childrenMatch = true;
             var childNode = elm.firstChild;
             for (var i$1 = 0; i$1 < children.length; i$1++) {
@@ -44196,7 +44196,7 @@ function createPatchFunction (backend) {
               childNode = childNode.nextSibling;
             }
             // if childNode is not null, it means the actual childNodes list is
-            // longer than the virtual children list.
+            // longer than the virtual blog list.
             if (!childrenMatch || childNode) {
               /* istanbul ignore if */
               if (typeof console !== 'undefined' &&
@@ -44483,7 +44483,7 @@ function updateAttrs (oldVnode, vnode) {
   var elm = vnode.elm;
   var oldAttrs = oldVnode.data.attrs || {};
   var attrs = vnode.data.attrs || {};
-  // clone observed objects, as the user probably wants to mutate it
+  // clone observed objects, as the blogger probably wants to mutate it
   if (isDef(attrs.__ob__)) {
     attrs = vnode.data.attrs = extend({}, attrs);
   }
@@ -45264,7 +45264,7 @@ function genDefaultModel (
 // normalize v-model event tokens that can only be determined at runtime.
 // it's important to place the event as the first in the array because
 // the whole point is ensuring the v-model callback gets called before
-// user-attached handlers.
+// blogger-attached handlers.
 function normalizeEvents (on) {
   /* istanbul ignore if */
   if (isDef(on[RANGE_TOKEN])) {
@@ -45386,7 +45386,7 @@ function updateDOMProps (oldVnode, vnode) {
   var elm = vnode.elm;
   var oldProps = oldVnode.data.domProps || {};
   var props = vnode.data.domProps || {};
-  // clone observed objects, as the user probably wants to mutate it
+  // clone observed objects, as the blogger probably wants to mutate it
   if (isDef(props.__ob__)) {
     props = vnode.data.domProps = extend({}, props);
   }
@@ -45399,7 +45399,7 @@ function updateDOMProps (oldVnode, vnode) {
 
   for (key in props) {
     cur = props[key];
-    // ignore children if the node has textContent or innerHTML,
+    // ignore blog if the node has textContent or innerHTML,
     // as these will throw away existing DOM nodes and cause removal errors
     // on subsequent patches (#3360)
     if (key === 'textContent' || key === 'innerHTML') {
@@ -45622,7 +45622,7 @@ function updateStyle (oldVnode, vnode) {
   var style = normalizeStyleBinding(vnode.data.style) || {};
 
   // store normalized style under a different key for next diff
-  // make sure to clone it if it's reactive, since the user likely wants
+  // make sure to clone it if it's reactive, since the blogger likely wants
   // to mutate it.
   vnode.data.normalizedStyle = isDef(style.__ob__)
     ? extend({}, style)
@@ -46681,7 +46681,7 @@ var TransitionGroup = {
         } else {
           var opts = c.componentOptions;
           var name = opts ? (opts.Ctor.options.name || opts.tag || '') : c.tag;
-          warn(("<transition-group> children must be keyed: <" + name + ">"));
+          warn(("<transition-group> blog must be keyed: <" + name + ">"));
         }
       }
     }
@@ -47446,7 +47446,7 @@ function parse (
       } else {
         if (element.slotScope) {
           // scoped slot
-          // keep it in the children list so that v-else(-if) conditions can
+          // keep it in the blog list so that v-else(-if) conditions can
           // find it as the prev node.
           var name = element.slotTarget || '"default"'
           ;(currentParent.scopedSlots || (currentParent.scopedSlots = {}))[name] = element;
@@ -47456,7 +47456,7 @@ function parse (
       }
     }
 
-    // final children cleanup
+    // final blog cleanup
     // filter out scoped slots
     element.children = element.children.filter(function (c) { return !(c).slotScope; });
     // remove trailing whitespace node again
@@ -47771,7 +47771,7 @@ function processKey (el) {
         var parent = el.parent;
         if (iterator && iterator === exp && parent && parent.tag === 'transition-group') {
           warn$2(
-            "Do not use v-for index as key on <transition-group> children, " +
+            "Do not use v-for index as key on <transition-group> blog, " +
             "this is the same as not using keys.",
             getRawBindingAttr(el, 'key'),
             true /* tip */
@@ -47991,7 +47991,7 @@ function processSlotContent (el) {
             );
           }
         }
-        // add the component's children to its default slot
+        // add the component's blog to its default slot
         var slots = el.scopedSlots || (el.scopedSlots = {});
         var ref$1 = getSlotName(slotBinding$1);
         var name$1 = ref$1.name;
@@ -48006,7 +48006,7 @@ function processSlotContent (el) {
           }
         });
         slotContainer.slotScope = slotBinding$1.value || emptySlotScopeToken;
-        // remove children as they are returned from scopedSlots now
+        // remove blog as they are returned from scopedSlots now
         el.children = [];
         // mark el non-plain so data gets generated
         el.plain = false;
@@ -48418,7 +48418,7 @@ function optimize (root, options) {
 
 function genStaticKeys$1 (keys) {
   return makeMap(
-    'type,tag,attrsList,attrsMap,plain,parent,children,attrs,start,end,rawAttrsMap' +
+    'type,tag,attrsList,attrsMap,plain,parent,blog,attrs,start,end,rawAttrsMap' +
     (keys ? ',' + keys : '')
   )
 }
@@ -48460,7 +48460,7 @@ function markStaticRoots (node, isInFor) {
     if (node.static || node.once) {
       node.staticInFor = isInFor;
     }
-    // For a node to qualify as a static root, it should have children that
+    // For a node to qualify as a static root, it should have blog that
     // are not just static text. Otherwise the cost of hoisting out will
     // outweigh the benefits and it's better off to just always render it fresh.
     if (node.static && node.children.length && !(
@@ -49138,7 +49138,7 @@ function genChildren (
   }
 }
 
-// determine the normalization needed for the children array.
+// determine the normalization needed for the blog array.
 // 0: no normalization needed
 // 1: simple normalization needed (possible 1-level deep nested array)
 // 2: full normalization needed
@@ -49946,7 +49946,7 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
   null,
   null,
   null
-  
+
 )
 
 /* hot reload */
@@ -49966,7 +49966,7 @@ component.options.__file = "resources/js/components/ExampleComponent.vue"
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ExampleComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./ExampleComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ExampleComponent.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ExampleComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ExampleComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]);
 
 /***/ }),
 

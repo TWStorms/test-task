@@ -1,13 +1,4 @@
-<hr>
-<footer class="my-3">
-    <ul class="nav justify-content-around pb-2 ">
-        <li class="nav-item"><a href="{{route('about-us')}}" class="nav-link px-2 footer_links">About Us</a></li>
-        <li class="nav-item"><a href="{{route('term-condition')}}" class="nav-link px-2 footer_links">Term and Condition</a></li>
-        <li class="nav-item"><a href="{{route('policy')}}" class="nav-link px-2 footer_links">Privacy Policy</a></li>
-        <li class="nav-item"><a href="{{route('contact-us')}}" class="nav-link px-2 footer_links">Contact Us</a></li>
-        <li class="nav-item"><a href="#" class="nav-link px-2 footer_links">Copyright &copy; 2021 all rights reserved</a></li>
-    </ul>
-</footer>
+
 {{--Load Scripts--}}
 {{--<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-eMNCOe7tC1doHpGoWe/6oMVemdAVTMs2xqW4mwXrXsW0L84Iytr2wi5v2QjrP/xp" crossorigin="anonymous"></script>--}}
 {{--<script src="{{ asset('js/custom.js') }}"></script>--}}

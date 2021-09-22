@@ -1368,7 +1368,7 @@
               }
           };
           /**
-           * Return the children of the node.
+           * Return the blog of the node.
            * @param {string} id
            * @returns {ExportNodeProperties[]}
            */
@@ -1775,7 +1775,7 @@
           }
       };
       /**
-       * Return the children of a node.
+       * Return the blog of a node.
        * @param {Node} node
        * @returns {Node[]}
        */
@@ -2196,7 +2196,7 @@
               }
           };
           /**
-           * If there are nodes in the mmp clipboard paste them in the map as children
+           * If there are nodes in the mmp clipboard paste them in the map as blog
            * of the node with the passed as parameter or of the selected node.
            * @param {string} id
            */
@@ -2242,7 +2242,7 @@
                   var children = _this.copiedNodes.filter(function (np) {
                       return np.parent === nodeProperties.id;
                   });
-                  // If there are children add them.
+                  // If there are blog add them.
                   if (children.length > 0) {
                       var nodes = _this.map.nodes.getNodes();
                       newParentNode = nodes[nodes.length - 1];

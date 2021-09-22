@@ -9,6 +9,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Helpers\GeneralHelper;
+use App\Helpers\IUserStatus;
 use App\Helpers\User;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
@@ -70,14 +71,14 @@ class LoginController extends Controller
     {
         if($user = Auth::user())
         {
-            if (GeneralHelper::IS_SUPER_ADMIN()){
-                return redirect('/super-admin/dashboard');
+            if (GeneralHelper::IS_ADMIN()){
+                return redirect('/admin/dashboard');
             }
-            if (GeneralHelper::IS_SUB_ADMIN()){
-                return redirect('/sub-admin/dashboard');
+            if (GeneralHelper::IS_SUPERVISOR()){
+                return redirect('/supervisor/dashboard');
             }
-            if (GeneralHelper::IS_USER()){
-                return redirect('/user/dashboard');
+            if (GeneralHelper::IS_BLOGGER()){
+                return redirect('/blogger/dashboard');
             }
         }
     }
@@ -94,7 +95,7 @@ class LoginController extends Controller
     }
 
     /**
-     * The user has been authenticated.
+     * The blogger has been authenticated.
      *
      * @param Request $request Request data
      * @param mixed   $user    User object
@@ -124,10 +125,6 @@ class LoginController extends Controller
      */
     public function registerUser($username = null)
     {
-        if($username)
-        {
-            return view::make('auth.user-register', compact('username'));
-        }
         return view::make('auth.user-register');
     }
 
@@ -141,7 +138,7 @@ class LoginController extends Controller
         {
             if(Hash::check($request["password"], $user->password))
             {
-                if($user->verify == 1)
+                if($user->verify == IUserStatus::VERIFIED)
                 {
                     Auth::loginUsingId($user->id, true);
                     return GeneralHelper::SEND_RESPONSE($request, $user,GeneralHelper::GET_ROLE($user).'.dashboard',"Successfully logged in");

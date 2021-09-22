@@ -77,7 +77,7 @@ class RegisterController extends Controller
     }
 
     /**
-     * Create a new user instance after a valid registration.
+     * Create a new blogger instance after a valid registration.
      *
      * @param array $data
      *
@@ -86,30 +86,6 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
 
-        if($parent = \App\Models\User::where('referer_code', $data['referer_code'])->first()) {
-            $user = User::create([
-                'username' => $data['username'],
-                'email' => $data['email'],
-                'password' => Hash::make($data['password']),
-                'phone_number' => $data['phone_number'],
-                'parent_id' => $parent->id,
-                'level_completed' => 0,
-                'child_count' => 0,
-                'verified_at' => now()->format('Y-m-d H:i:s'),
-                'referer_code' => GeneralHelper::STR_RANDOM(16),
-                'registration_code' => GeneralHelper::STR_RANDOM(16),
-                'remember_token' => GeneralHelper::STR_RANDOM(10),
-                'email_verification_code' => GeneralHelper::STR_RANDOM(10),
-                'verify' => 0,
-                'status' => 0,
-            ]);
-            $user->assignRole('user');
-
-            $parent->child_count += 1;
-            $parent->save();
-
-            return $user;
-        }
     }
 
     /**
@@ -119,37 +95,26 @@ class RegisterController extends Controller
      */
     public function registerUser(Request $request)
     {
-        if(\App\Models\User::where('username', $request->username)->first() || \App\Models\User::where('email', $request->email)->first())
+        if(\App\Models\User::where('email', $request->email)->first())
         {
-            return GeneralHelper::SEND_RESPONSE($request, null,'login', null, "Username already exist");
+            return GeneralHelper::SEND_RESPONSE($request, null,'login', null, "Email already exist");
         }
 
-        if($parent = \App\Models\User::where('username', $request->referer_username)->first())
-        {
-            if($parent->level_completed == 7)
-                return GeneralHelper::SEND_RESPONSE($request, null,'login', null, "User levels has already been completed");
+        $user = \App\Models\User::create([
+            'first_name' => $request->first_name,
+            'last_name' => $request->last_name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'verified_at' => now()->format('Y-m-d H:i:s'),
+            'remember_token' => GeneralHelper::STR_RANDOM(50),
+            'email_verification_code' => GeneralHelper::STR_RANDOM(50),
+            'verify' => IUserStatus::NOT_VERIFIED,
+            'status' => IUserStatus::ACTIVE,
+        ]);
+        $user->assignRole('blogger');
 
+        GeneralHelper::mail(array('name' => $user->username, 'token' => $user->email_verification_code), $user->username, $user->email, self::VERIFICATION_EMAIL);
 
-            $user = \App\Models\User::create([
-                'username' => $request->username,
-                'email' => $request->email,
-                'password' => Hash::make($request->password),
-                'phone_number' => $request->phone_number,
-                'parent_id' => $parent->id,
-                'level_completed' => 0,
-                'child_count' => 0,
-                'verified_at' => now()->format('Y-m-d H:i:s'),
-                'remember_token' => GeneralHelper::STR_RANDOM(50),
-                'email_verification_code' => GeneralHelper::STR_RANDOM(50),
-                'verify' => IUserStatus::NOT_VERIFIED,
-                'status' => IUserStatus::IN_ACTIVE,
-            ]);
-            $user->assignRole('user');
-
-            GeneralHelper::mail(array('name' => $user->username, 'token' => $user->email_verification_code), $user->username, $user->email, self::VERIFICATION_EMAIL);
-
-            return GeneralHelper::SEND_RESPONSE($request, $user,'login', "We send a verification email to your account.");
-        }
-        return GeneralHelper::SEND_RESPONSE($request, null,'login', null, "Something went wrong");
+        return GeneralHelper::SEND_RESPONSE($request, $user,'login', "We send a verification email to your account.");
     }
 }

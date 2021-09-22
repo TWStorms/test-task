@@ -17,59 +17,53 @@
                 <!--Wrapper-->
 
                 <!-- Main content area -->
-                <main class="px-sm-4 px-2 ">
-                    <div class="card-header" style="border: none; background-color: mediumpurple;margin-top: 10px;">
-                        <h4 class="text-center" style="font-family: 'Nunito', sans-serif; color: white; background-color: mediumpurple;"><strong>{{ucwords($user->username)}}</strong>
-                            <small>
-                                @if(\App\Helpers\GeneralHelper::IS_SUPER_ADMIN())
-                                    (Super Admin)
-                                @elseif(\App\Helpers\GeneralHelper::IS_SUB_ADMIN())
-                                    (Sub Admin)
-                                @elseif(\App\Helpers\GeneralHelper::IS_USER())
-                                    (User)
-                                @endif
-                            </small>
-                        </h4>
-                        <p class="text-center" style="font-family: 'Nunito', sans-serif; color: white; background-color: mediumpurple;">Personal Information</p>
-                    </div>
-                    <div class="row" style="margin-top: 50px; padding: 30px;">
-                        <div class="col-md-4 col-6">
-                            <div class="mb-4" style="color: mediumpurple;">
-                                <p class="mb-1"><i class="fa fa-user mr-1"></i>Username</p>
-                                <span>{{!empty($user->username)? ucwords($user->username) : ''}}</span>
+                <main class="px-sm-4 px-2 pt-3">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <div class="card-header" style="border: none; background-color: mediumpurple;margin-top: 10px;">
+                                <h4 class="text-center" style="font-family: 'Nunito', sans-serif; color: white; background-color: mediumpurple;"><strong>{{ucwords($user->username)}}</strong>
+                                    <small>
+                                        @if(\App\Helpers\GeneralHelper::IS_ADMIN())
+                                            (Admin)
+                                        @elseif(\App\Helpers\GeneralHelper::IS_SUPERVISOR())
+                                            (Supervisor)
+                                        @elseif(\App\Helpers\GeneralHelper::IS_BLOGGER())
+                                            (Blogger)
+                                        @endif
+                                    </small>
+                                </h4>
+                                <p class="text-center" style="font-family: 'Nunito', sans-serif; color: white; background-color: mediumpurple;">Personal Information</p>
                             </div>
                         </div>
-                        <div class="col-md-4 col-6">
+                    </div>
+                    <div class="row" style="margin-top: 50px; padding: 30px;">
+                        <div class="col-lg-4 col-md-6 col-sm-6 col-6">
+                            <div class="mb-4" style="color: mediumpurple;">
+                                <p class="mb-1"><i class="fa fa-user mr-1"></i>First Name</p>
+                                <span>{{!empty($user->first_name)? ucwords($user->first_name) : ''}}</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-6 col-6">
+                            <div class="mb-4" style="color: mediumpurple;">
+                                <p class="mb-1"><i class="fa fa-user mr-1"></i>Last Name</p>
+                                <span>{{!empty($user->last_name)? ucwords($user->last_name) : ''}}</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-6 col-6">
                             <div class="mb-4" style="color: mediumpurple;">
                                 <p class="mb-1"><i class="fa fa-mail-bulk mr-1"></i>Email</p>
                                 <span>{{!empty($user->email)? ucwords($user->email) : ''}}</span>
                             </div>
                         </div>
-                        <div class="col-md-4 col-6">
-                            <div class="mb-4" style="color: mediumpurple;">
-                                <p class="mb-1"><i class="fa fa-phone mr-1"></i>Phone Number</p>
-                                <span>{{!empty($user->phone_number)? ucwords($user->phone_number) : ''}}</span>
+                        @if(\App\Helpers\GeneralHelper::IS_SUPERVISOR())
+                            <div class="col-lg-4 col-md-6 col-sm-6 col-6">
+                                <div class="mb-4" style="color: mediumpurple;">
+                                    <p class=" mb-1"><i class="fa fa-child mr-1"></i>Blogger Count</p>
+                                    <span>{{!empty($user->subordinate)? count($user->subordinate) : '0'}}</span>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-4 col-6">
-                            <div class="mb-4" style="color: mediumpurple;">
-                                <p class="mb-1"><i class="fa fa-handshake mr-1"></i>Parent Username</p>
-                                <span>{{!empty($user->parent)? ucwords($user->parent->username) : 'None'}}</span>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-6">
-                            <div class="mb-4" style="color: mediumpurple;">
-                                <p class="mb-1"><i class="fa fa-layer-group mr-1"></i>Level Completed</p>
-                                <span>{{!empty($user->level_completed)? ucwords($user->level_completed) : '0'}}</span>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-6">
-                            <div class="mb-4" style="color: mediumpurple;">
-                                <p class=" mb-1"><i class="fa fa-child mr-1"></i>Child Count</p>
-                                <span>{{!empty($user->child_count)? ucwords($user->child_count) : '0'}}</span>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-6">
+                        @endif
+                        <div class="col-lg-4 col-md-6 col-sm-6 col-6">
                             <div class="mb-4">
                                 <p class="mb-1" style="color: mediumpurple;"><i class="i-Building text-16 mr-1"></i>Status</p>
                                     @if($user->verify === \App\Helpers\IUserStatus::VERIFIED)
@@ -86,22 +80,20 @@
                                     @endif</span>
                             </div>
                         </div>
-                        @if(\App\Helpers\GeneralHelper::IS_USER())
-                            <div class="col-md-4 col-6">
-                                <div class="mb-4" style="color: mediumpurple;">
-                                    <p class=" mb-1"><i class="fa fa-lock mr-1"></i>Change Password</p>
-                                    <div onclick="changePassword({{$user->id}})"><i class="fa fa-edit mr-1" style="cursor: pointer;"></i></div>
-                                </div>
+                        <div class="col-lg-4 col-md-6 col-sm-6 col-6">
+                            <div class="mb-4" style="color: mediumpurple;">
+                                <p class=" mb-1"><i class="fa fa-lock mr-1"></i>Change Password</p>
+                                <div onclick="changePassword({{$user->id}})"><i class="fa fa-edit mr-1" style="cursor: pointer;"></i></div>
                             </div>
-                        @endif
+                        </div>
                     </div>
                 </main>
             </div>
         </div>
     </div>
-    @if(\App\Helpers\GeneralHelper::IS_USER())
+{{--    @if(\App\Helpers\GeneralHelper::IS_USER())--}}
         @include('change-password-modal')
-    @endif
+{{--    @endif--}}
     {{--</div>--}}
     <script>
         function changePassword(id)

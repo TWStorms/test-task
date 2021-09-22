@@ -27,20 +27,20 @@ class RedirectIfAuthenticated
     public function handle($request, Closure $next, $guard = null)
     {
 
-//        $user = \App\Models\User::where('email', $request->email)->first();
-//        Auth::loginUsingId($user->id, true);
+//        $blogger = \App\Models\User::where('email', $request->email)->first();
+//        Auth::loginUsingId($blogger->id, true);
 //        Auth::logout();
 
         if (Auth::check()) {
             $user = Auth::user();
-            if (GeneralHelper::IS_SUPER_ADMIN()){
-                return redirect('/super-admin/dashboard');
+            if (GeneralHelper::IS_ADMIN()){
+                return redirect('/admin/dashboard');
             }
-            if (GeneralHelper::IS_SUB_ADMIN()){
-                return redirect('/sub-admin/dashboard');
+            if (GeneralHelper::IS_SUPERVISOR()){
+                return redirect('/supervisor/dashboard');
             }
-            if (GeneralHelper::IS_USER()){
-                return redirect('/user/dashboard');
+            if (GeneralHelper::IS_BLOGGER()){
+                return redirect('/blogger/dashboard');
             }
         }
 
