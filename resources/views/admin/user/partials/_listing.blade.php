@@ -39,6 +39,3 @@
     @endif
     </tbody>
 </table>
-<div class="page-link" style="float:left">
-    {!! $users->links('pagination::bootstrap-4') !!}
-</div>
